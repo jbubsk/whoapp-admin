@@ -21,12 +21,14 @@ var options = {
 	}
 };
 
+// read gulp dir and require each file with tasks
 wrench.readdirSyncRecursive('./gulp').filter(function (file) {
 	return (/\.(js|coffee)$/i).test(file);
 }).map(function (file) {
 	require('./gulp/' + file)(options);
 });
 
+// main default task
 gulp.task('default', ['clean'], function () {
 	gulp.start('build');
 });

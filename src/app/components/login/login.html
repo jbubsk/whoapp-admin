@@ -2,13 +2,15 @@
     <div class="login-form">
         <form>
             <div class="form-input">
-                <input type="text" name="username" placeholder="Логин">
+                <input type="text" name="username" placeholder="Логин"
+                ng-model="login.model.username">
             </div>
             <div class="form-input">
-                <input type="password" name="password" placeholder="Пароль">
+                <input type="password" name="password" placeholder="Пароль"
+                ng-model="login.model.password">
             </div>
             <div class="form-input">
-                <a href="#" class="button tiny">Tiny Button</a>
+                <a href="#" class="button tiny" ng-click="login.login()">Войти</a>
             </div>
         </form>
     </div>

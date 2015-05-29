@@ -15,7 +15,7 @@ function Router($stateProvider, $urlRouterProvider, $injector) {
 			templateUrl: 'app/components/home/home.html'
 		});
 
-	$urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/login');
 }
 Router.$inject = ['$stateProvider', '$urlRouterProvider', '$injector'];
 
