@@ -1,0 +1,12 @@
+<nav class="page-wrapper row" ng-controller="InterestsController as ctrl">
+    <div class="top-bar-section">
+        <form>
+            <div class="form-input">
+                <input type="text" ng-bind="ctrl.model.name" placeholder="Название"/>
+            </div>
+            <div class="form-input">
+                <a href="#" class="button tiny" ng-click="ctrl.add()">Добавить</a>
+            </div>
+        </form>
+    </div>
+</nav>

@@ -1,0 +1,6 @@
+<ul class="right">
+    <li ng-repeat="item in menus" ng-class="item.className">
+        <a ng-if="item.state === 'logout'" ng-click="logout()">{{item.title}}</a>
+        <a ng-if="item.state !== 'logout'" ui-sref="{{item.state}}">{{item.title}}</a>
+    </li>
+</ul>

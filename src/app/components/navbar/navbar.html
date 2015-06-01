@@ -1,15 +1,18 @@
 <nav class="top-bar row" ng-controller="NavbarController as navbar">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="#">Whoapp admin tools</a></h1>
-    </li>
-  </ul>
-  <section class="top-bar-section">
-    <ul class="right">
-      <li class="active"><a ng-href="#">Home</a></li>
-      <li><a ng-href="#">Места</a></li>
-      <li><a ng-href="#">Интересы</a></li>
-      <li><a ng-href="#">Выйти</a></li>
+    <ul class="title-area">
+        <li class="name">
+            <h1><a ui-sref="auth.home">Whoapp admin tools</a></h1>
+        </li>
     </ul>
-  </section>
+    <section class="top-bar-section">
+        <div ng-if="navbar.isAuthenticated()">
+            <nav-menu class="right">
+                <menu-item state="auth.interests" title="Интересы"></menu-item>
+                <menu-item state="auth.places" title="Места"></menu-item>
+                <menu-item state="logout" title="Выйти"></menu-item>
+
+                <menu-impl logout="navbar.logout()"></menu-impl>
+            </nav-menu>
+        </div>
+    </section>
 </nav>

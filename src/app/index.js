@@ -1,11 +1,20 @@
 'use strict';
 
 import RouterModule from '../app/router/router.module';
+import LayoutModule from '../app/layout/layout.module';
 import NavbarModule from '../app/components/navbar/navbar.module';
-import HomeModule from '../app/components/home/home.module';
 import LoginModule from '../app/components/login/login.module';
+import HomeModule from '../app/components/home/home.module';
+import PlacesModule from '../app/components/places/places.module';
+import InterestsModule from '../app/components/interests/interests.module';
 
 import ServicesModule from '../app/common/services/services.module';
+import DirectivesModule from '../app/common/directives/directive.module';
+
+function RunApp($injector) {
+	$injector.get('Session').initialize();
+}
+RunApp.$inject = ['$injector'];
 
 angular.module('whoappAdmin', [
 	'ngCookies',
@@ -13,9 +22,13 @@ angular.module('whoappAdmin', [
 	'mm.foundation',
 
 	RouterModule,
+	LayoutModule,
 	NavbarModule,
-	HomeModule,
 	LoginModule,
+	HomeModule,
+    PlacesModule,
+    InterestsModule,
 
-	ServicesModule
-]);
+	ServicesModule,
+	DirectivesModule
+]).run(RunApp);

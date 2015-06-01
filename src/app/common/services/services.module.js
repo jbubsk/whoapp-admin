@@ -1,7 +1,7 @@
 'use strict';
 
-import Session from './session';
-import AuthService from './authentication';
+import Session from './session.service';
+import AuthService from './authentication.service';
 
 var ServicesModule = 'services';
 

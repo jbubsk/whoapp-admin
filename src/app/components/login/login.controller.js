@@ -1,22 +1,27 @@
 'use strict';
 
 class LoginController {
-	constructor(AuthService, $log) {
-		this.model = {
-			username: '',
-			password: ''
-		};
-		this.authService = AuthService;
-		this.logger = $log;
-	}
+    constructor($injector) {
+        this.model = {
+            username: '',
+            password: ''
+        };
+        this.authService = $injector.get('AuthService');
+        this.logger = $injector.get('$log');
+        this.state = $injector.get('$state');
+    }
 
-	login(){
-		this.authService.login(this.model).then(function(data){
-			this.logger.debug(data);
-		});
-	}
+    login() {
+        this.authService
+            .login(this.model)
+            .then(function (data) {
+                if (data.username) {
+                    this.state.go('auth.home');
+                }
+            }.bind(this));
+    }
 }
 
-LoginController.$inject = ['AuthService', '$log'];
+LoginController.$inject = ['$injector'];
 
 export default LoginController;

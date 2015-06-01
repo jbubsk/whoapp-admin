@@ -1,22 +1,63 @@
 'use strict';
 
-function Router($stateProvider, $urlRouterProvider, $injector) {
-	$stateProvider
-		.state('main', {
-			abstract: true,
-			templateUrl: 'app/layout/layout.html'
-		})
-		.state('main.login', {
-			url: '/login',
-			templateUrl: 'app/components/login/login.html'
-		})
-		.state('main.home', {
-			url: '/home',
-			templateUrl: 'app/components/home/home.html'
-		});
+function Router($injector) {
+    $injector.get('$locationProvider').html5Mode({
+        enabled: false,
+        requireBase: false
+    });
 
-	$urlRouterProvider.otherwise('/login');
+    $injector.get('$stateProvider')
+        .state('login', {
+            url: '/login',
+            templateUrl: 'app/components/login/login.html'
+        })
+        .state('auth', {
+            abstract: true,
+            templateUrl: 'app/layout/layout.html'
+        })
+
+        .state('auth.home', {
+            url: '/home',
+            templateUrl: 'app/components/home/home.html',
+            auth: true
+        })
+        .state('auth.places', {
+            url: '/places',
+            templateUrl: 'app/components/places/places.html',
+            auth: true
+        })
+        .state('auth.interests', {
+            url: '/interests',
+            templateUrl: 'app/components/interests/interests.html',
+            auth: true
+        });
+
+    $injector.get('$urlRouterProvider').otherwise('/home');
+
 }
-Router.$inject = ['$stateProvider', '$urlRouterProvider', '$injector'];
+Router.$inject = ['$injector'];
 
 export default Router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

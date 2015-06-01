@@ -1,16 +1,17 @@
-<div class="login" ng-controller="LoginController as login">
-    <div class="login-form">
+<div class="page-wrapper" ng-controller="LoginController as ctrl">
+    <div class="ctrl-form">
         <form>
             <div class="form-input">
                 <input type="text" name="username" placeholder="Логин"
-                ng-model="login.model.username">
+                       ng-model="ctrl.model.username"
+                       auto-focus>
             </div>
             <div class="form-input">
                 <input type="password" name="password" placeholder="Пароль"
-                ng-model="login.model.password">
+                       ng-model="ctrl.model.password">
             </div>
             <div class="form-input">
-                <a href="#" class="button tiny" ng-click="login.login()">Войти</a>
+                <a class="button tiny" ng-click="ctrl.login()">Войти</a>
             </div>
         </form>
     </div>
