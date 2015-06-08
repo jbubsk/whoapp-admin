@@ -1,6 +1,7 @@
 <div class="page-wrapper" ng-controller="LoginController as ctrl">
-    <div class="ctrl-form">
+    <div id="ctrl-form">
         <form>
+            <div class="error-msg">{{ctrl.errorMsg}}</div>
             <div class="form-input">
                 <input type="text" name="username" placeholder="Логин"
                        ng-model="ctrl.model.username"
@@ -8,7 +9,8 @@
             </div>
             <div class="form-input">
                 <input type="password" name="password" placeholder="Пароль"
-                       ng-model="ctrl.model.password">
+                       ng-model="ctrl.model.password"
+                       on-enter="ctrl.login()">
             </div>
             <div class="form-input">
                 <a class="button tiny" ng-click="ctrl.login()">Войти</a>

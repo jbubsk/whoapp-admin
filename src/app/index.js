@@ -11,24 +11,28 @@ import InterestsModule from '../app/components/interests/interests.module';
 import ServicesModule from '../app/common/services/services.module';
 import DirectivesModule from '../app/common/directives/directive.module';
 
+import Interceptors from '../app/common/interceptors';
+
 function RunApp($injector) {
-	$injector.get('Session').initialize();
+    $injector.get('Session').initialize();
 }
 RunApp.$inject = ['$injector'];
 
 angular.module('whoappAdmin', [
-	'ngCookies',
-	'ngResource',
-	'mm.foundation',
+    'ngCookies',
+    'ngResource',
+    'mm.foundation',
 
-	RouterModule,
-	LayoutModule,
-	NavbarModule,
-	LoginModule,
-	HomeModule,
+    RouterModule,
+    LayoutModule,
+    NavbarModule,
+    LoginModule,
+    HomeModule,
     PlacesModule,
     InterestsModule,
 
-	ServicesModule,
-	DirectivesModule
-]).run(RunApp);
+    ServicesModule,
+    DirectivesModule
+])
+    .config(Interceptors)
+    .run(RunApp);

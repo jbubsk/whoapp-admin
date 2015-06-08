@@ -26,7 +26,6 @@ function navMenuDirective($injector) {
                     }
                 });
                 scope.$broadcast('menuChanged', scope.menuItems);
-                $injector.get('$log').debug(scope.menuItems);
             }
 
             $injector.get('$rootScope').$on("$stateChangeSuccess", () => {

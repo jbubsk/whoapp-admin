@@ -3,7 +3,7 @@
 function autoFocus() {
     return {
         restrict: 'A',
-        link(scope, element)        {
+        link    : function (scope, element) {
             element.focus();
         }
     }

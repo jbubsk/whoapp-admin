@@ -9,7 +9,6 @@ function menuImpl() {
         templateUrl: 'app/components/navbar/menu.html',
         controller: function($scope){
             $scope.$on('menuChanged', function (e, menuItems) {
-                console.debug({msg:'menu-changed', data: menuItems});
                 $scope.menus = menuItems;
             });
         }
