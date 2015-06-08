@@ -21,6 +21,7 @@ RunApp.$inject = ['$injector'];
 angular.module('whoappAdmin', [
     'ngCookies',
     'ngResource',
+    'ngAnimate',
     'mm.foundation',
 
     RouterModule,

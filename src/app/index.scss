@@ -29,10 +29,9 @@ hr {
   justify-content: center;
 }
 
-.flex-column-center {
+.flex-column {
   display: flex;
   flex-flow: column;
-  align-items: center;
 }
 
 .page-wrapper {
@@ -49,19 +48,21 @@ hr {
 }
 
 #places-list-box {
-  @extend .flex-column-center;
-  margin: 50px 10px;
-  height: 300px;
-  width: 450px;
+  @extend .flex-column;
+  justify-content: center;
+  margin: 0 10px;
+  height: 400px;
+  width: 480px;
+}
+
+#places-list {
+  overflow: auto;
 }
 
 #places-loader {
   background: url("../assets/images/ajax-loader.gif") no-repeat center;
   width: inherit;
   height: inherit;
-}
-
-.loader {
 }
 
 #places-list .row {
@@ -73,6 +74,7 @@ hr {
   border-bottom: solid 1px #d7d7d7;
   background-color: rgb(232, 241, 242);
   padding: 0 5px;
+  position: relative;
 
   div {
     @extend .flex-row-center;
@@ -80,10 +82,38 @@ hr {
   }
 }
 
-#places-list {
-  overflow: auto;
-  border: solid 1px rgb(232, 230, 230);
+#places-list .row:last-child {
+  border-bottom: solid 1px rgb(232, 230, 230);
   border-radius: 2px;
+}
+
+#places-list .row:first-child {
+  border-top: solid 1px rgb(232, 230, 230);
+  border-radius: 2px;
+}
+
+.animation {
+  -webkit-transition: 400ms;
+  -moz-transition: 400ms;
+  -ms-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
+}
+
+.animation.ng-enter {
+  left: 480px;
+}
+
+.animation.ng-enter.animation.ng-enter-active {
+  left: 0;
+}
+
+.animation.ng-leave {
+  left: 0;
+}
+
+.animation.ng-leave.animation.ng-leave-active {
+  left: 480px;
 }
 
 .row .place-name {
@@ -99,15 +129,25 @@ hr {
 
 .row .place-city {
   @extend .flex-row-center;
+  margin-left: 10px;
+}
 
+.row .place-delete {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  margin-right: 20px;
+  img {
+    cursor: pointer;
+  }
 }
 
 #places-form {
-  @extend .flex-column-center;
-  align-self: flex-start;
-  margin: 140px 30px;
+  @extend .flex-column;
+  justify-content: center;
+  margin: 0 30px;
   width: 300px;
-  height: 300px;
+  height: 400px;
 }
 
 .form-input {
@@ -201,7 +241,7 @@ hr {
 }
 
 #address-suggestion-block {
-  @extend .flex-column-center;
+  @extend .flex-column;
   color: #3eae3e;
   padding: 10px;
   border: solid 1px #51e451;

@@ -65,31 +65,55 @@ class PlacesController {
     }
 
     add() {
-        var _this = this;
-
-        if (_this.isModelValid()) {
-            _this.placesService.addPlace({
+        var _this = this,
+            model = {
                 name: _this.model.name,
                 city_id: _this.model.cityId,
-                address: _this.model.suggestedAddress
-            })
-                .then(function () {
-                    _this.getPlaces();
+                address: _this.model.suggestedAddress,
+                name_ru: _this.model.city
+            };
+
+        if (_this.isModelValid()) {
+            _this.placesService.addPlace(model)
+                .then(function (data) {
+                    model.id = data.result.id;
+                    _this.places.unshift(model);
+
+                    _this._resetState();
                 });
         }
     }
 
     getPlaces() {
         var _this = this;
-
         this.placesService.getPlaces().then(function (data) {
-            _this.places = _this.places.concat(data.result);
-            angular.forEach(_this.model, function (value, key) {
-                _this.model[key] = '';
-            });
-            _this.showSearchResults = false;
-            _this.showPlacesResults = true;
+            _this.places = data.result;
+            _this._resetState();
         });
+
+    }
+
+    deletePlace(placeId) {
+        var _this = this;
+        _this.placesService.deletePlace(placeId)
+            .then(function () {
+                angular.forEach(_this.places, function (value, key) {
+                    if (value.id === placeId) {
+                        _this.places.splice(key, 1);
+                    }
+                });
+            });
+
+    }
+    _resetState(){
+        var _this = this;
+
+        angular.forEach(_this.model, function (value, key) {
+            _this.model[key] = '';
+        });
+        _this.cityEditorDisabled = false;
+        _this.showSearchResults = false;
+        _this.showPlacesResults = true;
     }
 }
 PlacesController.$inject = ['$scope', '$injector'];

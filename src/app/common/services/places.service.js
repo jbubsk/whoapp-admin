@@ -19,6 +19,12 @@ class PlacesService {
             'post': {method: 'POST', withCredentials: true}
         }).post(model).$promise;
     }
+
+    deletePlace(placeId) {
+        return this.resource(config.apiUrl + '/api/places/:id', {id: placeId}, {
+            'delete': {method: 'DELETE', withCredentials: true}
+        }).delete().$promise;
+    }
 }
 
 PlacesService.$inject = ['$resource'];

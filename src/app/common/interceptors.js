@@ -5,11 +5,11 @@ function Interceptors($httpProvider) {
 
         return {
             'request': function (config) {
-                //$log.debug(config);
+                logger.debug(config);
                 return config;
             },
             'response': function (response) {
-                //$log.debug(response);
+                logger.debug(response);
                 return response;
             },
             'responseError': function (response) {

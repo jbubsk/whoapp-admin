@@ -16,7 +16,7 @@
                 </div>
                 <span id="city-edit-switcher"
                       ng-class="ctrl.cityEditorDisabled ? 'active' : 'inactive'"
-                      ng-click="ctrl.switchCityEditor()">Изменить</span>
+                      ng-click="ctrl.cityEditorDisabled = false">Изменить</span>
             </div>
             <div class="form-input">
                 <input type="text" placeholder="Адрес"
@@ -54,14 +54,16 @@
     </form>
     <div id="places-list-box">
         <div id="places-list" ng-if="ctrl.showPlacesResults">
-            <div ng-repeat="place in ctrl.places" class="row">
+            <div ng-repeat="place in ctrl.places" class="row animation">
+                <div class="place-delete">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAmdJREFUOBFlU81u2kAQHnttjG1+DFEStfQAKaEVh2oPOeTKMTeqvEAj5ZBj+iT0Ddw3QIqiXIJk5efQiIsb9RyhVoqaVGAomNou2N3ZslZ/Vlp2mZnv+2ZmxwCr9fHwsNPf3+92LcsStn/PbrVqfWi3u9d7ex3hk/Hy6ejIXt/ZOZYkqW1WKg4GigBxou0JpY5Vr7fB8457zaaNPgmVEXx/fg7RaATJcgmzhwd3Hoat14PBGINS8NYWHV5d8Ri0+77/Tok8r3rf66VgYARmuUxhOMRMWhjIlWs1Ory4APRLaGSLiVUlrBnTNtfWKDqTOOZBwM7ZZOJazSaUEHx5+dueJJzg+3zuzheLFifDFA1Nc7gyI0GwhERsl3d3YXxzkypLjGDs++48jnmJIhtep5HJOGahQAUYg5MwhCQIAO8YPCPE9VdgLCMlwD+Yia6qTk7X6dLzYDmZAD6TLMtACIGporg/dD1tLmIU/Plz5Ws1YOXA6O4OyAqIYLzLyn/hXIDjUX290XBMy+LdFqoIVnAz8CYhtBjHf80JHyQO3t52csUi/XZ2BjJrnixJaeoIVlUVVHZWNI2WZTklkQQYlR8RzJolFP1MxiUMtMGUBQGSYFafg8B9jKKWslGv2zpT/np6ysESc7KRBl9VecOwPpIkzrMVSWaVyYtslpLp1Fai6XQwZuOJyilY09zIMNJusyxbZLFwnrPXQQLc2CM9CAb8GU/yeVsNwzeYWmSa7s9cLgWLF8JSN9mwvSyVqJ7Nwhfff9/o9w/SOTgpFDosg+qiWDwQH5EAixNJnhqGrSvK4NXt7Vu0/wJXTRcHoQJN+QAAAABJRU5ErkJggg=="
+                         ng-click="ctrl.deletePlace(place.id)"/>
+                </div>
                 <div class="place-name">{{place.name}}</div>
                 <div class="place-address">{{place.address}}</div>
                 <div class="place-city">{{place.name_ru}}</div>
             </div>
         </div>
-        <div id="places-loader" class="loader" ng-if="!ctrl.showPlacesResults">
-            <!--<img src="assets/images/ajax-loader.gif" alt="loader"/>-->
-        </div>
+        <div id="places-loader" class="loader" ng-if="!ctrl.showPlacesResults"></div>
     </div>
 </nav>
