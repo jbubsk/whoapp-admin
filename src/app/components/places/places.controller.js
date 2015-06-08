@@ -21,13 +21,10 @@ class PlacesController {
         this.error = '';
         this.cityEditorDisabled = false;
         this.showSearchResults = false;
-        this.showPlacesResults = false;
+        this.placesListLoader = false;
+        this.addPlaceLoader = false;
         this.places = [];
         this.getPlaces();
-    }
-
-    switchCityEditor() {
-        this.cityEditorDisabled = false;
     }
 
     search() {
@@ -73,13 +70,17 @@ class PlacesController {
                 name_ru: _this.model.city
             };
 
+        _this.addPlaceLoader = true;
         if (_this.isModelValid()) {
             _this.placesService.addPlace(model)
                 .then(function (data) {
                     model.id = data.result.id;
                     _this.places.unshift(model);
 
+                    _this.addPlaceLoader = false;
                     _this._resetState();
+                }, function () {
+                    _this.addPlaceLoader = false;
                 });
         }
     }
@@ -93,19 +94,7 @@ class PlacesController {
 
     }
 
-    deletePlace(placeId) {
-        var _this = this;
-        _this.placesService.deletePlace(placeId)
-            .then(function () {
-                angular.forEach(_this.places, function (value, key) {
-                    if (value.id === placeId) {
-                        _this.places.splice(key, 1);
-                    }
-                });
-            });
-
-    }
-    _resetState(){
+    _resetState() {
         var _this = this;
 
         angular.forEach(_this.model, function (value, key) {
@@ -113,7 +102,7 @@ class PlacesController {
         });
         _this.cityEditorDisabled = false;
         _this.showSearchResults = false;
-        _this.showPlacesResults = true;
+        _this.placesListLoader = true;
     }
 }
 PlacesController.$inject = ['$scope', '$injector'];

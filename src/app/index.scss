@@ -72,7 +72,6 @@ hr {
   font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
   font-size: 13px;
   border-bottom: solid 1px #d7d7d7;
-  background-color: rgb(232, 241, 242);
   padding: 0 5px;
   position: relative;
 
@@ -146,6 +145,7 @@ hr {
   @extend .flex-column;
   justify-content: center;
   margin: 0 30px;
+  padding: 0 5px;
   width: 300px;
   height: 400px;
 }
@@ -194,7 +194,7 @@ hr {
 }
 
 .form-block {
-  margin: 0 5px;
+
 }
 
 .db-dropdown {
@@ -240,6 +240,10 @@ hr {
   border-color: #00e100 !important;
 }
 
+#search-results {
+  position: relative;
+}
+
 #address-suggestion-block {
   @extend .flex-column;
   color: #3eae3e;
@@ -250,6 +254,18 @@ hr {
   height: 85px;
   width: 290px;
   font-size: 13px;
+}
+
+#place-add-loader {
+  @extend .flex-column;
+  justify-content: center;
+  height: 118px;
+  width: 290px;
+  background: #d7d7d7 url("../assets/images/ajax-loader.gif") no-repeat center;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  z-index: 100;
 }
 
 #suggested-address {
