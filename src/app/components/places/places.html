@@ -1,5 +1,5 @@
 <nav class="page-wrapper" ng-controller="PlacesController as ctrl">
-    <form id="places-form">
+    <div id="places-form" class="form-side">
         <div class="form-block">
             <div class="form-input">
                 <input type="text" placeholder="Название"
@@ -52,16 +52,19 @@
         <div class="form-block error-block" ng-if="ctrl.error.length > 0">
             <span ng-bind="ctrl.error"></span>
         </div>
-    </form>
-    <div id="places-list-box">
-        <div id="places-list" ng-if="ctrl.placesListLoader">
-            <div ng-repeat="place in ctrl.places" class="row animation">
-                <div delete-place></div>
-                <div class="place-name">{{place.name}}</div>
-                <div class="place-address">{{place.address}}</div>
-                <div class="place-city">{{place.name_ru}}</div>
+    </div>
+    <div class="list-side">
+        <div id="collection" ng-if="!ctrl.listLoader">
+            <div ng-repeat="item in ctrl.collection" class="row animation">
+                <div delete-item service="PlacesService"></div>
+                <div class="item-name">{{item.name}}</div>
+                <div class="place-address">{{item.address}}</div>
+                <div class="place-city">{{item.name_ru}}</div>
             </div>
         </div>
-        <div id="places-loader" class="loader" ng-if="!ctrl.placesListLoader"></div>
+            <div ng-if="ctrl.emptyList">
+                Здесь пока нет ни одной записи
+            </div>
+        <div id="places-loader" class="loader" ng-if="ctrl.listLoader"></div>
     </div>
 </nav>

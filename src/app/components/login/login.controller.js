@@ -20,12 +20,12 @@ class LoginController {
 
     login() {
         this.errorMsg = '';
-        this.authService
-            .login(this.model)
-            .then(
+        this.authService.login(this.model).then(
             function (data) {
-                if (data.result.username) {
+                if (data.result && data.result.username) {
                     this.state.go('auth.home');
+                } else {
+
                 }
             }.bind(this),
 

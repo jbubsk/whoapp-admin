@@ -15,12 +15,14 @@ function Interceptors($httpProvider) {
             'responseError': function (response) {
                 var $state = $injector.get('$state');
                 var Session = $injector.get('Session');
+                var $q = $injector.get('$q');
 
                 if (response.status === 401) {
                     Session.destroy();
                     $state.go('login');
                 }
-                return response;
+                return $q.reject(response);
+                //return response;
             }
         }
     }

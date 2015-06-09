@@ -1,12 +1,27 @@
-<nav class="page-wrapper row" ng-controller="InterestsController as ctrl">
-    <div class="top-bar-section">
-        <form>
+<div class="page-wrapper row" ng-controller="InterestsController as ctrl">
+    <div id="interests-form" class="form-side">
+        <div>
             <div class="form-input">
-                <input type="text" ng-bind="ctrl.model.name" placeholder="Название"/>
+                <input type="text" ng-model="ctrl.model.name" placeholder="Название"/>
             </div>
             <div class="form-input">
-                <a href="#" class="button tiny" ng-click="ctrl.add()">Добавить</a>
+                <a class="button tiny" ng-click="ctrl.add()">Добавить</a>
             </div>
-        </form>
+        </div>
+        <div class="form-block error-block" ng-if="ctrl.errorMessage.length > 0">
+            <span ng-bind="ctrl.errorMessage"></span>
+        </div>
     </div>
-</nav>
+    <div class="list-side">
+        <div id="collection" ng-if="!ctrl.listLoader">
+            <div ng-repeat="item in ctrl.collection" class="row animation">
+                <div delete-item service="InterestsService"></div>
+                <div class="item-name">{{item.name}}</div>
+            </div>
+        </div>
+        <div ng-if="ctrl.emptyList">
+            Здесь пока нет ни одной записи
+        </div>
+        <div id="places-loader" class="loader" ng-if="ctrl.listLoader"></div>
+    </div>
+</div>

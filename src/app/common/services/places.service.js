@@ -1,5 +1,3 @@
-"use strict";
-
 import config from '../config';
 
 class PlacesService {
@@ -20,8 +18,8 @@ class PlacesService {
         }).post(model).$promise;
     }
 
-    deletePlace(placeId) {
-        return this.resource(config.apiUrl + '/api/places/:id', {id: placeId}, {
+    deleteItem(id) {
+        return this.resource(config.apiUrl + '/api/places/:id', {id: id}, {
             'delete': {method: 'DELETE', withCredentials: true}
         }).delete().$promise;
     }

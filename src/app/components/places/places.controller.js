@@ -21,9 +21,9 @@ class PlacesController {
         this.error = '';
         this.cityEditorDisabled = false;
         this.showSearchResults = false;
-        this.placesListLoader = false;
+        this.listLoader = true;
         this.addPlaceLoader = false;
-        this.places = [];
+        this.collection = [];
         this.getPlaces();
     }
 
@@ -70,13 +70,13 @@ class PlacesController {
                 name_ru: _this.model.city
             };
 
-        _this.addPlaceLoader = true;
         if (_this.isModelValid()) {
+            _this.addPlaceLoader = true;
             _this.placesService.addPlace(model)
                 .then(function (data) {
                     model.id = data.result.id;
-                    _this.places.unshift(model);
-
+                    _this.collection.unshift(model);
+                    _this._checkEmpty();
                     _this.addPlaceLoader = false;
                     _this._resetState();
                 }, function () {
@@ -88,10 +88,10 @@ class PlacesController {
     getPlaces() {
         var _this = this;
         this.placesService.getPlaces().then(function (data) {
-            _this.places = data.result;
+            _this.collection = data.result;
+            _this._checkEmpty();
             _this._resetState();
         });
-
     }
 
     _resetState() {
@@ -102,7 +102,11 @@ class PlacesController {
         });
         _this.cityEditorDisabled = false;
         _this.showSearchResults = false;
-        _this.placesListLoader = true;
+        _this.listLoader = false;
+    }
+
+    _checkEmpty() {
+        this.emptyList = this.collection.length === 0;
     }
 }
 PlacesController.$inject = ['$scope', '$injector'];

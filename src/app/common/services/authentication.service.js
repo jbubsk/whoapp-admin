@@ -7,40 +7,55 @@ class AuthService {
         this.resource = $injector.get('$resource');
         this.session = $injector.get('Session');
         this.logger = $injector.get('$log');
+        this.$q = $injector.get('$q');
     }
 
-    login(model, successCallback, errorCallback) {
+    login(model) {
+        var deferred = this.$q.defer();
 
-        return this.resource(config.apiUrl + '/auth/login', null, {
+        this.resource(config.apiUrl + '/auth/login', null, {
             login: {method: 'POST', withCredentials: true}
-        }).login(model, function (data) {
-            this.session.create(data.username);
-            this.logger.debug({
-                info: 'New session is created.',
-                result: data.result
-            });
-        }.bind(this)).$promise;
+        }).login(model).$promise.then(
+            function (data) {
+                this.session.create(data.username);
+                this.logger.debug({
+                    info: 'New session is created.',
+                    result: data.result
+                });
+                deferred.resolve(data);
+            }.bind(this),
+            function (error) {
+                this.logger.debug({
+                    info: 'Authentication is failed.',
+                    result: error
+                });
+                deferred.reject(error);
+            }.bind(this));
+
+        return deferred.promise;
     }
 
-    logout(successCallback, errorCallback) {
+    logout() {
 
         return this.resource(config.apiUrl + '/auth/logout', null, {
             get: {method: 'GET', withCredentials: true}
-        }).get(function (data) {
-            this.session.destroy();
-            this.logger.debug({
-                info: 'Session is destroyed.',
-                result: data.result
-            });
-        }.bind(this)).$promise;
-    }
-
-    register(model, successCallback, errorCallback) {
-
+        }).get().$promise.then(
+            function (data) {
+                this.session.destroy();
+                this.logger.debug({
+                    info: 'Session is destroyed.',
+                    result: data.result
+                });
+            }.bind(this)
+        );
     }
 
     isAuthenticated() {
         return this.session.isAuthenticated();
+    }
+
+    register() {
+
     }
 }
 

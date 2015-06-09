@@ -72,7 +72,8 @@ function cityLoadDirective($log) {
             scope.$watch(
                 function () {
                     return ngModel.$modelValue;
-                }, function (newValue, oldValue) {
+                },
+                function (newValue, oldValue) {
                     if (!scope.ctrl.cityEditorDisabled) {
                         if (newValue !== oldValue) {
                             if (newValue.length > 0) {

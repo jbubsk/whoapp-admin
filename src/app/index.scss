@@ -47,16 +47,19 @@ hr {
   font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
 }
 
-#places-list-box {
+.list-side {
   @extend .flex-column;
   justify-content: center;
+  align-items: center;
   margin: 0 10px;
   height: 400px;
   width: 480px;
+  font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
 }
 
-#places-list {
+#collection {
   overflow: auto;
+  min-width: 200px;
 }
 
 #places-loader {
@@ -65,11 +68,10 @@ hr {
   height: inherit;
 }
 
-#places-list .row {
+#collection .row {
   @extend .flex-row-center;
   height: 40px;
   line-height: 20px;
-  font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
   font-size: 13px;
   border-bottom: solid 1px #d7d7d7;
   padding: 0 5px;
@@ -81,12 +83,12 @@ hr {
   }
 }
 
-#places-list .row:last-child {
+#collection .row:last-child {
   border-bottom: solid 1px rgb(232, 230, 230);
   border-radius: 2px;
 }
 
-#places-list .row:first-child {
+#collection .row:first-child {
   border-top: solid 1px rgb(232, 230, 230);
   border-radius: 2px;
 }
@@ -115,7 +117,17 @@ hr {
   left: 480px;
 }
 
-.row .place-name {
+.row .delete-item {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  margin-right: 20px;
+  img {
+    cursor: pointer;
+  }
+}
+
+.row .item-name {
   justify-content: flex-start !important;
   width: 150px;
   margin-right: 5px;
@@ -131,17 +143,7 @@ hr {
   margin-left: 10px;
 }
 
-.row .place-delete {
-  position: relative;
-  width: 12px;
-  height: 12px;
-  margin-right: 20px;
-  img {
-    cursor: pointer;
-  }
-}
-
-#places-form {
+.form-side {
   @extend .flex-column;
   justify-content: center;
   margin: 0 30px;
@@ -191,10 +193,6 @@ hr {
 
 #city-edit-switcher.inactive {
   color: lightgray;
-}
-
-.form-block {
-
 }
 
 .db-dropdown {
