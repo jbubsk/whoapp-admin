@@ -1,7 +1,7 @@
 "use strict";
 
 class YandexSearch {
-    getAddressWithCoordiantes(objectName) {
+    getAddressWithCoordinates(objectName) {
         // options can be {kind:'house'} - by default
         return ymaps.geocode(objectName)
             .then(function (res) {

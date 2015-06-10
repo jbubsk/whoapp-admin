@@ -31,7 +31,7 @@ class PlacesController {
         var _this = this, model = _this.model;
 
         if (model.cityId) {
-            _this.service.getAddressWithCoordiantes(model.city + ', ' + model.address).then(
+            _this.service.getAddressWithCoordinates(model.city + ', ' + model.address).then(
                 function (result) {
                     _this.$scope.$apply(function () {
                         model.latitude = result.coordinates[0];

@@ -68,7 +68,7 @@ hr {
   height: inherit;
 }
 
-#collection .row {
+#collection .item-row {
   @extend .flex-row-center;
   height: 40px;
   line-height: 20px;
@@ -83,12 +83,12 @@ hr {
   }
 }
 
-#collection .row:last-child {
+#collection .item-row:last-child {
   border-bottom: solid 1px rgb(232, 230, 230);
   border-radius: 2px;
 }
 
-#collection .row:first-child {
+#collection .item-row:first-child {
   border-top: solid 1px rgb(232, 230, 230);
   border-radius: 2px;
 }
@@ -117,7 +117,7 @@ hr {
   left: 480px;
 }
 
-.row .delete-item {
+.item-row .delete-item {
   position: relative;
   width: 12px;
   height: 12px;
@@ -127,20 +127,32 @@ hr {
   }
 }
 
-.row .item-name {
+.item-row .item-name {
   justify-content: flex-start !important;
   width: 150px;
   margin-right: 5px;
 }
 
-.row .place-address {
+.item-row .place-address {
   justify-content: flex-start !important;
   flex-grow: 1;
 }
 
-.row .place-city {
+.item-row .place-city {
   @extend .flex-row-center;
   margin-left: 10px;
+}
+
+.item-row .user-date {
+  justify-content: flex-start !important;
+  flex-grow: 1;
+
+}
+
+.item-row .user-status {
+  @extend .flex-row-center;
+  margin-left: 10px;
+
 }
 
 .form-side {

@@ -21,6 +21,11 @@ function Router($injector) {
             templateUrl: 'app/components/home/home.html',
             auth: true
         })
+        .state('auth.users', {
+            url: '/users',
+            templateUrl: 'app/components/users/users.html',
+            auth: true
+        })
         .state('auth.places', {
             url: '/places',
             templateUrl: 'app/components/places/places.html',

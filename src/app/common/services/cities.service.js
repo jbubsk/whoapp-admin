@@ -7,7 +7,7 @@ class CityService {
     }
 
     getCity(cityName) {
-        return this.resource(config.apiUrl + '/api/cities', null, {
+        return this.resource(config.serviceHost + '/api/cities', null, {
             get: {method: 'GET', withCredentials: true}
         }).get({name: cityName}).$promise;
     }

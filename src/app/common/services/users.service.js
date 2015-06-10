@@ -2,20 +2,21 @@
 
 import config from '../config';
 
-class InterestsService {
+class UsersService {
     constructor($resource, $q) {
         this.resource = $resource;
         this.$q = $q;
+        this.serviceUrl = config.serviceHost + '/api/users';
     }
 
-    getInterests() {
-        return this.resource(config.serviceHost + '/api/interests', null, {
+    getUsers() {
+        return this.resource(this.serviceUrl, null, {
             'get': {method: 'GET', withCredentials: true}
         }).get().$promise;
     }
 
     deleteItem(id) {
-        return this.resource(config.serviceHost + '/api/interests/:id', {id: id}, {
+        return this.resource(this.serviceUrl + '/:id', {id: id}, {
             'delete': {method: 'DELETE', withCredentials: true}
         }).delete().$promise;
     }
@@ -23,7 +24,7 @@ class InterestsService {
     addItem(model) {
         var deferred = this.$q.defer();
 
-        this.resource(config.serviceHost + '/api/interests', null, {
+        this.resource(this.serviceUrl, null, {
             'post': {method: 'POST', withCredentials: true}
         }).post(model).$promise.then(
             function (data) {
@@ -39,6 +40,6 @@ class InterestsService {
         return deferred.promise;
     }
 }
-InterestsService.$inject = ['$resource', '$q'];
+UsersService.$inject = ['$resource', '$q'];
 
-export default InterestsService;
+export default UsersService;

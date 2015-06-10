@@ -1,8 +1,14 @@
-<div class="page-wrapper row" ng-controller="InterestsController as ctrl">
+<div class="page-wrapper row" ng-controller="UsersController as ctrl">
     <div id="interests-form" class="form-side">
         <div>
             <div class="form-input">
-                <input type="text" ng-model="ctrl.model.name" placeholder="Название"/>
+                <input type="text" ng-model="ctrl.model.username" placeholder="Имя пользователя"/>
+            </div>
+            <div class="form-input">
+                <input type="text" ng-model="ctrl.model.password" placeholder="Пароль"/>
+            </div>
+            <div class="form-input">
+                <input type="text" ng-model="ctrl.model.email" placeholder="E-mail"/>
             </div>
             <div class="form-input">
                 <a class="button tiny" ng-click="ctrl.add()">Добавить</a>
@@ -15,8 +21,10 @@
     <div class="list-side">
         <div id="collection" ng-if="!ctrl.listLoader">
             <div ng-repeat="item in ctrl.collection" class="item-row animation">
-                <div delete-item service="InterestsService"></div>
-                <div class="item-name">{{item.name}}</div>
+                <div delete-item service="UsersService"></div>
+                <div class="item-name">{{item.username}}</div>
+                <div class="user-date">{{item.last_date_activity}}</div>
+                <div class="user-status">{{item.status}}</div>
             </div>
         </div>
         <div ng-if="ctrl.emptyList">

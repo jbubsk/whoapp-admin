@@ -13,7 +13,7 @@ class AuthService {
     login(model) {
         var deferred = this.$q.defer();
 
-        this.resource(config.apiUrl + '/auth/login', null, {
+        this.resource(config.serviceHost + '/auth/login', null, {
             login: {method: 'POST', withCredentials: true}
         }).login(model).$promise.then(
             function (data) {
@@ -37,7 +37,7 @@ class AuthService {
 
     logout() {
 
-        return this.resource(config.apiUrl + '/auth/logout', null, {
+        return this.resource(config.serviceHost + '/auth/logout', null, {
             get: {method: 'GET', withCredentials: true}
         }).get().$promise.then(
             function (data) {
