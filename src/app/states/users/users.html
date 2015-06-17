@@ -1,0 +1,35 @@
+<div class="page-wrapper row" ng-controller="UsersController as ctrl">
+    <div id="interests-form" class="form-side">
+        <div>
+            <div class="form-input">
+                <input type="text" ng-model="ctrl.model.username" placeholder="Имя пользователя"/>
+            </div>
+            <div class="form-input">
+                <input type="text" ng-model="ctrl.model.password" placeholder="Пароль"/>
+            </div>
+            <div class="form-input">
+                <input type="text" ng-model="ctrl.model.email" placeholder="E-mail"/>
+            </div>
+            <div class="form-input">
+                <a class="button tiny" ng-click="ctrl.add()">Добавить</a>
+            </div>
+        </div>
+        <div class="form-block error-block" ng-if="ctrl.errorMessage.length > 0">
+            <span ng-bind="ctrl.errorMessage"></span>
+        </div>
+    </div>
+    <div class="list-side">
+        <div id="collection" ng-if="!ctrl.listLoader">
+            <div ng-repeat="item in ctrl.collection" class="item-row animation">
+                <div delete-item service="UsersService"></div>
+                <div class="item-name">{{item.username}}</div>
+                <div class="user-date">{{item.lastDateActivity}}</div>
+                <div class="user-status" ng-class="item.status === 'deleted' ? 'red' : ''">{{item.status}}</div>
+            </div>
+        </div>
+        <div ng-if="ctrl.emptyList">
+            Здесь пока нет ни одной записи
+        </div>
+        <div id="places-loader" class="loader" ng-if="ctrl.listLoader"></div>
+    </div>
+</div>

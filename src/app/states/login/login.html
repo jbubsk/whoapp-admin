@@ -1,0 +1,20 @@
+<div class="page-wrapper" ng-controller="LoginController as ctrl">
+    <div id="login-form">
+        <form>
+            <div class="error-msg">{{ctrl.errorMsg}}</div>
+            <div class="form-input">
+                <input type="text" name="username" placeholder="Логин"
+                       ng-model="ctrl.model.username"
+                       auto-focus>
+            </div>
+            <div class="form-input">
+                <input type="password" name="password" placeholder="Пароль"
+                       ng-model="ctrl.model.password"
+                       on-enter="ctrl.login()">
+            </div>
+            <div class="form-input">
+                <a class="button tiny" ng-click="ctrl.login()">Войти</a>
+            </div>
+        </form>
+    </div>
+</div>

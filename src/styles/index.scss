@@ -1,0 +1,188 @@
+@import "places";
+@import "login";
+@import "users";
+
+.error-msg {
+  color: red;
+  margin: 5px;
+  font-size: 13px;
+}
+
+.error-block {
+  @extend .error-msg;
+  @extend .flex-row-center;
+  width: 290px;
+  border: solid 1px red;
+  border-radius: 2px;
+  height: 45px;
+  font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+
+  span {
+    align-self: center;
+  }
+}
+
+hr {
+  border: solid #b0ddb7;
+  border-width: 1px 0 0;
+  margin: 1px 0;
+}
+
+.flex-row-center {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column;
+}
+
+.page-wrapper {
+  @extend .flex-row-center;
+  margin-top: 50px;
+}
+
+.greeting {
+  font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+
+.list-side {
+  @extend .flex-column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  height: 400px;
+  width: 480px;
+  font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+
+#collection {
+  overflow: auto;
+  min-width: 200px;
+}
+
+#places-loader {
+  background: url("../images/ajax-loader.gif") no-repeat center;
+  width: inherit;
+  height: inherit;
+}
+
+#collection .item-row {
+  @extend .flex-row-center;
+  height: 40px;
+  line-height: 20px;
+  font-size: 13px;
+  border-bottom: solid 1px #d7d7d7;
+  padding: 0 5px;
+  position: relative;
+
+  div {
+    @extend .flex-row-center;
+    align-self: center;
+  }
+}
+
+#collection .item-row:last-child {
+  border-bottom: solid 1px rgb(232, 230, 230);
+  border-radius: 2px;
+}
+
+#collection .item-row:first-child {
+  border-top: solid 1px rgb(232, 230, 230);
+  border-radius: 2px;
+}
+
+.animation {
+  -webkit-transition: 400ms;
+  -moz-transition: 400ms;
+  -ms-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
+}
+
+.animation.ng-enter {
+  left: 480px;
+}
+
+.animation.ng-enter.animation.ng-enter-active {
+  left: 0;
+}
+
+.animation.ng-leave {
+  left: 0;
+}
+
+.animation.ng-leave.animation.ng-leave-active {
+  left: 480px;
+}
+
+.item-row .delete-item {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  margin-right: 20px;
+  img {
+    cursor: pointer;
+  }
+}
+
+.item-row .item-name {
+  justify-content: flex-start !important;
+  width: 150px;
+  margin-right: 5px;
+}
+
+.item-row .place-address {
+  justify-content: flex-start !important;
+  flex-grow: 1;
+}
+
+.item-row .place-city {
+  @extend .flex-row-center;
+  margin-left: 10px;
+}
+
+.item-row .user-date {
+  justify-content: flex-start !important;
+  flex-grow: 1;
+
+}
+
+.item-row .user-status {
+  @extend .flex-row-center;
+  margin-left: 10px;
+
+}
+
+.form-side {
+  @extend .flex-column;
+  justify-content: center;
+  margin: 0 30px;
+  padding: 0 5px;
+  width: 300px;
+  height: 400px;
+}
+
+.form-input {
+  @extend .flex-row-center;
+  flex-flow: column;
+  margin-top: 0;
+
+  input {
+    height: 30px !important;
+    margin-bottom: 5px !important;
+    border-radius: 2px !important;
+  }
+
+  a {
+    border-radius: 2px !important;
+  }
+
+}
+
+/* It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+// injector
+// endinjector
