@@ -24,7 +24,7 @@ class LoginController {
         this.authService.login(this.model).then(
             function (data) {
                 if (data.result && data.result.username) {
-                    this.state.go('auth.home');
+                    this.state.go('home');
                 } else {
 
                 }

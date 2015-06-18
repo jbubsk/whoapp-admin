@@ -2,11 +2,11 @@
 
 class NavMenuController {
     constructor($scope) {
-        this.menuItems = $scope.menuItems = {};
+        this.menuItems = $scope.menuItems = [];
     }
 
     addMenuItem(item) {
-        this.menuItems[item.state] = item;
+        this.menuItems.push({state: item.state, title: item.title});
     }
 }
 NavMenuController.$inject = ['$scope'];
@@ -27,7 +27,6 @@ function navMenuDirective($injector) {
                     }
                 });
                 $injector.get('$log').debug({'setting active menu': scope.menuItems});
-                //scope.$broadcast('menuChanged', scope.menuItems);
             }
 
             $injector.get('$rootScope').$on('$stateChangeSuccess', () => {

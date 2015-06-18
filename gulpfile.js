@@ -308,7 +308,7 @@ gulp.task('compile', 'Does the same as \'jshint\', \'htmlhint\', \'images\', \'t
     });
 
 /**
- * Setup config file src/common/config.json to include there env,serviceHost,socketHost
+ * Setup config file ./src/app.config.json to include there env,serviceHost,socketHost
  */
 gulp.task('config', 'setup config variables', function () {
     var fileName = './src/app.config.json';

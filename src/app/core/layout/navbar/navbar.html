@@ -7,14 +7,13 @@
     <section class="top-bar-section">
         <div ng-if="navbar.isAuthenticated()">
             <nav-menu class="right">
-                <menu-item state="auth.interests" title="Интересы"></menu-item>
-                <menu-item state="auth.places" title="Места"></menu-item>
-                <menu-item state="auth.users" title="Пользователи"></menu-item>
+                <menu-item state="interests" title="Интересы"></menu-item>
+                <menu-item state="places" title="Места"></menu-item>
+                <menu-item state="users" title="Пользователи"></menu-item>
                 <menu-item state="logout" title="Выйти"></menu-item>
 
                 <menu-impl logout="navbar.logout()"></menu-impl>
             </nav-menu>
         </div>
     </section>
-    <div ui-view></div>
 </div>

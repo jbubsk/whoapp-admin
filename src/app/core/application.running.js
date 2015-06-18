@@ -2,19 +2,18 @@
 
 import template from './layout/navbar/navbar.html!text';
 
-//function authenticationRouting(event, toState) {
-function authenticationRouting() {
+function authenticationRouting(event, toState) {
     /*jshint validthis:true */
-    //var AuthService = this.$injector.get('AuthService');
-    //var $state = this.$injector.get('$state');
+    var AuthService = this.$injector.get('AuthService');
+    var $state = this.$injector.get('$state');
 
-    //if (toState.auth && !AuthService.isAuthenticated()) {
-    //    event.preventDefault();
-    //    $state.go('login');
-    //} else if (!toState.auth && AuthService.isAuthenticated()) {
-    //    event.preventDefault();
-    //    $state.go('home');
-    //}
+    if (toState.auth && !AuthService.isAuthenticated()) {
+        event.preventDefault();
+        $state.go('login');
+    } else if (!toState.auth && AuthService.isAuthenticated()) {
+        event.preventDefault();
+        $state.go('home');
+    }
 }
 
 function applicationRun(Session, $templateCache, $rootScope, $injector) {

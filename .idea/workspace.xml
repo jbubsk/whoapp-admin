@@ -2,100 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5754db99-d860-4d0c-92dd-a3060c114c12" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.htmlhintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/core/application.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/core/application.running.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/core/config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/core/core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/states/home/home.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/states/home/home.route.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/core/interceptors.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/states/interests/interests.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/states/interests/interests.route.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jspm.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/core/layout/layout.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/states/login/login.route.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/styles/login.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/menu_item.directive.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/states/places/places.route.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/styles/places.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/core/socket.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/states/users/users.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/states/users/users.route.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/styles/users.scss" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e2e/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e2e/main.po.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/e2e/main.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/favicon._ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/build.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/e2e-tests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/inject.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/proxy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/scripts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/styles.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/unit-tests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gulp/watch.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/karma.conf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/protractor.conf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/common/config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/common/interceptors.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/common/socket.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/components/home/home.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/components/interests/interests.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/components/navbar/menu_item.directive.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/components/users/users.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/layout/layout.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/layout/layout.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/router/router.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/router/router.module.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/router/router.run.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/app/vendor.scss" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/directives/autofocus.directive.js" afterPath="$PROJECT_DIR$/src/app/core/directives/autofocus.directive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/directives/delete.item.directive.js" afterPath="$PROJECT_DIR$/src/app/core/directives/delete.item.directive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/directives/directive.module.js" afterPath="$PROJECT_DIR$/src/app/core/directives/directives.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/directives/onenter.directive.js" afterPath="$PROJECT_DIR$/src/app/core/directives/onenter.directive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/services/authentication.service.js" afterPath="$PROJECT_DIR$/src/app/core/services/authentication.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/services/cities.service.js" afterPath="$PROJECT_DIR$/src/app/core/services/cities.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/services/interests.service.js" afterPath="$PROJECT_DIR$/src/app/core/services/interests.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/services/places.service.js" afterPath="$PROJECT_DIR$/src/app/core/services/places.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/services/services.module.js" afterPath="$PROJECT_DIR$/src/app/core/services/services.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/services/session.service.js" afterPath="$PROJECT_DIR$/src/app/core/services/session.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/services/users.service.js" afterPath="$PROJECT_DIR$/src/app/core/services/users.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/common/services/yandex.service.js" afterPath="$PROJECT_DIR$/src/app/core/services/yandex.service.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/home/home.controller.js" afterPath="$PROJECT_DIR$/src/app/states/home/home.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/home/home.html" afterPath="$PROJECT_DIR$/src/app/states/home/home.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/interests/interests.controller.js" afterPath="$PROJECT_DIR$/src/app/states/interests/interests.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/interests/interests.html" afterPath="$PROJECT_DIR$/src/app/states/interests/interests.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/login/login.controller.js" afterPath="$PROJECT_DIR$/src/app/states/login/login.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/login/login.html" afterPath="$PROJECT_DIR$/src/app/states/login/login.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/login/login.module.js" afterPath="$PROJECT_DIR$/src/app/states/login/login.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/navbar/menu.html" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/menu.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/navbar/menu_impl.directive.js" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/menu_impl.directive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/navbar/nav_menu.directive.js" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/nav_menu.directive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/navbar/navbar.controller.js" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/navbar.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/navbar/navbar.html" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/navbar.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/navbar/navbar.module.js" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/navbar.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/places/city.load.directive.js" afterPath="$PROJECT_DIR$/src/app/states/places/city.load.directive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/places/places.controller.js" afterPath="$PROJECT_DIR$/src/app/states/places/places.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/places/places.html" afterPath="$PROJECT_DIR$/src/app/states/places/places.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/places/places.module.js" afterPath="$PROJECT_DIR$/src/app/states/places/places.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/places/watch.error.directive.js" afterPath="$PROJECT_DIR$/src/app/states/places/watch.error.directive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/users/users.controller.js" afterPath="$PROJECT_DIR$/src/app/states/users/users.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/components/users/users.html" afterPath="$PROJECT_DIR$/src/app/states/users/users.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/index.scss" afterPath="$PROJECT_DIR$/src/styles/index.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/app/layout/layout.controller.js" afterPath="$PROJECT_DIR$/src/app/core/layout/layout.controller.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/assets/images/ajax-loader.gif" afterPath="$PROJECT_DIR$/src/images/ajax-loader.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.config.json" afterPath="$PROJECT_DIR$/src/app.config.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/core/application.config.js" afterPath="$PROJECT_DIR$/src/app/core/application.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/core/application.running.js" afterPath="$PROJECT_DIR$/src/app/core/application.running.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/states/interests/interests.js" afterPath="$PROJECT_DIR$/src/app/states/interests/interests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/states/login/login.controller.js" afterPath="$PROJECT_DIR$/src/app/states/login/login.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/states/login/login.js" afterPath="$PROJECT_DIR$/src/app/states/login/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/core/layout/navbar/nav_menu.directive.js" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/nav_menu.directive.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/core/layout/navbar/navbar.html" afterPath="$PROJECT_DIR$/src/app/core/layout/navbar/navbar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/states/places/places.controller.js" afterPath="$PROJECT_DIR$/src/app/states/places/places.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/states/places/places.js" afterPath="$PROJECT_DIR$/src/app/states/places/places.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/states/users/users.js" afterPath="$PROJECT_DIR$/src/app/states/users/users.js" />
     </list>
     <ignored path="whoapp-admin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -146,8 +66,8 @@
       <file leaf-file-name="app.config.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app.config.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.019946808">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1133,12 +1053,12 @@
       <workItem from="1437731289609" duration="11987000" />
       <workItem from="1437934246665" duration="37000" />
       <workItem from="1438075333399" duration="42000" />
-      <workItem from="1438180471968" duration="2750000" />
+      <workItem from="1438180471968" duration="2764000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277116000" />
+    <option name="totallyTimeSpent" value="277130000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -1239,8 +1159,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app.config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.019946808">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
