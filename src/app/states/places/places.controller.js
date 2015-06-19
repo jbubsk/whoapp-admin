@@ -6,6 +6,7 @@ class PlacesController {
         this.service = $injector.get('YandexService');
         this.placesService = $injector.get('PlacesService');
         this.logger = $injector.get('$log');
+        this.images = $injector.get('IMAGES');
 
         this.model = {
             name: '',
@@ -63,6 +64,7 @@ class PlacesController {
         var _this = this,
             model = {
                 name: _this.model.name,
+                city: _this.model.city,
                 cityId: _this.model.cityId,
                 address: _this.model.suggestedAddress,
                 latitude: _this.model.latitude,

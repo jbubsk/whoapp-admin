@@ -1,4 +1,6 @@
 <nav class="page-wrapper" ng-controller="PlacesController as ctrl">
+
+    <!-- FORM -->
     <div id="places-form" class="form-side">
         <div class="form-block">
             <div class="form-input">
@@ -14,9 +16,11 @@
                            ng-disabled="ctrl.cityEditorDisabled"
                            watch-error/>
                 </div>
-                <span id="city-edit-switcher"
+                <div id="city-edit-switcher"
                       ng-class="ctrl.cityEditorDisabled ? 'active' : 'inactive'"
-                      ng-click="ctrl.cityEditorDisabled = false">Изменить</span>
+                      ng-click="ctrl.cityEditorDisabled = false">
+                    <img ng-src="{{ctrl.images.edit}}" alt="Edit"/>
+                </div>
             </div>
             <div class="form-input">
                 <input type="text" placeholder="Адрес"
@@ -53,13 +57,15 @@
             <span ng-bind="ctrl.error"></span>
         </div>
     </div>
+
+    <!-- LIST -->
     <div class="list-side">
         <div id="collection" ng-if="!ctrl.listLoader">
             <div ng-repeat="item in ctrl.collection" class="item-row animation">
                 <div delete-item service="PlacesService"></div>
                 <div class="item-name">{{item.name}}</div>
                 <div class="place-address">{{item.address}}</div>
-                <div class="place-city">{{item.name_ru}}</div>
+                <div class="place-city">{{item.city}}</div>
             </div>
         </div>
             <div ng-if="ctrl.emptyList">
