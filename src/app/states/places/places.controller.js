@@ -67,8 +67,8 @@ class PlacesController {
                 city: _this.model.city,
                 cityId: _this.model.cityId,
                 address: _this.model.suggestedAddress,
-                latitude: _this.model.latitude,
-                longitude: _this.model.longitude
+                latitude: _this.model.latitude.toFixed(7),
+                longitude: _this.model.longitude.toFixed(7)
             };
 
         if (_this.isModelValid()) {
