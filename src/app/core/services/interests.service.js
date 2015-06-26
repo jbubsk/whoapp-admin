@@ -6,12 +6,22 @@ class InterestsService {
     constructor($resource, $q) {
         this.resource = $resource;
         this.$q = $q;
+        this.cache = [];
     }
 
     getInterests() {
-        return this.resource(config.serviceHost + '/api/interests', null, {
-            'get': {method: 'GET', withCredentials: true}
-        }).get().$promise;
+        return new Promise((resolve, reject) => {
+            if (this.cache.length > 0) {
+                resolve(this.cache);
+            } else {
+                this.resource(config.serviceHost + '/api/interests', null, {
+                    'get': {method: 'GET', withCredentials: true}
+                }).get().$promise.then(result => {
+                    this.cache = result.result;
+                    resolve(this.cache);
+                });
+            }
+        });
     }
 
     deleteItem(id) {

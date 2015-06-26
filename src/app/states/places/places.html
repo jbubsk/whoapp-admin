@@ -1,76 +1,82 @@
-<nav class="page-wrapper" ng-controller="PlacesController as ctrl">
+<div>
+    <div class="page-wrapper" ng-controller="PlacesController as ctrl">
 
-    <!-- FORM -->
-    <div id="places-form" class="form-side">
-        <div class="form-block">
-            <div class="form-input">
-                <input type="text" placeholder="Название"
-                       ng-model="ctrl.model.name"
-                       watch-error/>
-            </div>
-            <div id="city-block" class="form-input">
-                <div id="city-editor">
-                    <input type="text" placeholder="Город"
-                           city-load
-                           ng-model="ctrl.model.city"
-                           ng-disabled="ctrl.cityEditorDisabled"
+        <!-- FORM -->
+        <div id="places-form" class="form-side">
+            <div class="form-block">
+                <div class="form-input">
+                    <input type="text" placeholder="Название"
+                           ng-model="ctrl.model.name"
                            watch-error/>
                 </div>
-                <div id="city-edit-switcher"
-                      ng-class="ctrl.cityEditorDisabled ? 'active' : 'inactive'"
-                      ng-click="ctrl.cityEditorDisabled = false">
-                    <img ng-src="{{ctrl.images.edit}}" alt="Edit"/>
-                </div>
-            </div>
-            <div class="form-input">
-                <input type="text" placeholder="Адрес"
-                       ng-model="ctrl.model.address"
-                       watch-error/>
-            </div>
-            <div class="form-input">
-                <a class="button tiny" ng-click="ctrl.search()">Найти</a>
-            </div>
-        </div>
-        <div id="search-results" class="form-block" ng-if="ctrl.showSearchResults">
-            <div id="address-suggestion-block">
-                <div id="suggested-address">
-                    <span ng-bind="ctrl.model.suggestedAddress"></span>
-                </div>
-                <hr/>
-                <div id="lat-long">
-                    <div>
-                        <span>широта:&nbsp;</span>
-                        <span ng-bind="ctrl.model.latitude"></span>
+                <div id="city-block" class="form-input">
+                    <div id="city-editor">
+                        <input type="text" placeholder="Город"
+                               city-load
+                               ng-model="ctrl.model.city"
+                               ng-disabled="ctrl.cityEditorDisabled"
+                               watch-error/>
                     </div>
-                    <div>
-                        <span>долгота:&nbsp;</span>
-                        <span ng-bind="ctrl.model.longitude"></span>
+                    <div id="city-edit-switcher"
+                         ng-class="ctrl.cityEditorDisabled ? 'active' : 'inactive'"
+                         ng-click="ctrl.cityEditorDisabled = false">
+                        <img ng-src="{{ctrl.images.edit}}" alt="Edit"/>
                     </div>
                 </div>
+                <div class="form-input">
+                    <input type="text" placeholder="Адрес"
+                           ng-model="ctrl.model.address"
+                           watch-error/>
+                </div>
+                <div class="form-input">
+                    <a class="button tiny" ng-click="ctrl.search()">Найти</a>
+                </div>
             </div>
-            <div class="form-input">
-                <a class="button tiny green" ng-click="ctrl.add()">Добавить</a>
+            <div id="search-results" class="form-block" ng-if="ctrl.showSearchResults">
+                <div id="address-suggestion-block">
+                    <div id="suggested-address">
+                        <span ng-bind="ctrl.model.suggestedAddress"></span>
+                    </div>
+                    <hr/>
+                    <div id="lat-long">
+                        <div>
+                            <span>широта:&nbsp;</span>
+                            <span ng-bind="ctrl.model.latitude"></span>
+                        </div>
+                        <div>
+                            <span>долгота:&nbsp;</span>
+                            <span ng-bind="ctrl.model.longitude"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <a class="button tiny green" ng-click="ctrl.add()">Добавить</a>
+                </div>
+                <div id="place-add-loader" class="loader" ng-if="ctrl.addPlaceLoader"></div>
             </div>
-            <div id="place-add-loader" class="loader" ng-if="ctrl.addPlaceLoader"></div>
+            <div class="form-block error-block" ng-if="ctrl.error.length > 0">
+                <span ng-bind="ctrl.error"></span>
+            </div>
         </div>
-        <div class="form-block error-block" ng-if="ctrl.error.length > 0">
-            <span ng-bind="ctrl.error"></span>
-        </div>
-    </div>
 
-    <!-- LIST -->
-    <div class="list-side">
-        <div id="collection" ng-if="!ctrl.listLoader">
-            <div ng-repeat="item in ctrl.collection" class="item-row animation">
-                <div delete-item service="PlacesService"></div>
-                <div class="item-name">{{item.name}}</div>
-                <div class="place-address">{{item.address}}</div>
-                <div class="place-city">{{item.city}}</div>
+        <!-- LIST -->
+        <div class="list-side">
+            <div id="collection" ng-if="!ctrl.listLoader">
+                <div ng-repeat="item in ctrl.collection" class="item-row row-animation"
+                     ng-click="ctrl.transition(item)">
+                    <div delete-item service="PlacesService"></div>
+                    <div class="item-name">{{item.name}}</div>
+                    <div class="place-address">{{item.address}}</div>
+                    <div class="place-city">{{item.city}}</div>
+                </div>
             </div>
-        </div>
             <div ng-if="ctrl.emptyList">
                 Здесь пока нет ни одной записи
             </div>
-        <div id="places-loader" class="loader" ng-if="ctrl.listLoader"></div>
+            <div id="places-loader" class="loader" ng-if="ctrl.listLoader"></div>
+        </div>
+
     </div>
-</nav>
+    <!-- place -->
+    <div ui-view></div>
+</div>

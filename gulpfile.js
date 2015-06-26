@@ -11,7 +11,6 @@
 var del = require('del');
 var fs = require('fs');
 var gulp = require('gulp');
-var argv = require('yargs').argv;
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 
@@ -95,6 +94,7 @@ var paths = {
      */
     app: {
         basePath: 'src/',
+        stylesMain: 'src/styles/main.scss',
         styles: 'src/styles/**/*.scss',
         images: 'src/images/**/*.{png,gif,jpg,jpeg}',
         config: {
@@ -194,7 +194,7 @@ gulp.task('sass', 'Compile sass files into the main.css', function () {
     // if it's set to `true` the gulp.watch will keep gulp from stopping
     // every time we mess up sass files
     var errLogToConsole = ENV === 'dev' || ENV === 'test';
-    return gulp.src([paths.app.styles, './jspm_packages/github/zurb/foundation*/scss/foundation.scss'])
+    return gulp.src([paths.app.stylesMain, './jspm_packages/github/zurb/foundation*/scss/foundation.scss'])
         .pipe($.changed(paths.tmp.styles, {extension: '.scss'}))
         .pipe($.sourcemaps.init())
         .pipe($.sass({style: 'compressed', errLogToConsole: errLogToConsole}))
@@ -311,23 +311,25 @@ gulp.task('compile', 'Does the same as \'jshint\', \'htmlhint\', \'images\', \'t
  * Setup config file ./src/app.config.json to include there env,serviceHost,socketHost
  */
 gulp.task('config', 'setup config variables', function () {
-    var fileName = './src/app.config.json';
-    var local = {
-            env: 'development',
-            serviceHost: 'http://172.16.16.114:8085'
-        },
-        remote = {
-            env: 'development',
-            serviceHost: 'http://whoappbackend-jbubsk.rhcloud.com'
-        };
+    if (process.env.MODE) {
+        var fileName = './src/app.config.json',
+            local = {
+                env: 'development',
+                serviceHost: 'http://172.16.16.114:8085'
+            },
+            remote = {
+                env: 'development',
+                serviceHost: 'http://whoappbackend-jbubsk.rhcloud.com'
+            };
 
-    var content;
-    if (argv.local) {
-        content = JSON.stringify(local);
-    } else {
-        content = JSON.stringify(remote);
+        var content;
+        if (process.env.MODE === 'local') {
+            content = JSON.stringify(local);
+        } else {
+            content = JSON.stringify(remote);
+        }
+        fs.writeFileSync(fileName, content);
     }
-    fs.writeFileSync(fileName, content);
 });
 //=============================================
 //                MAIN TASKS
@@ -340,7 +342,7 @@ gulp.task('config', 'setup config variables', function () {
 /**
  * The 'serve' task serve the dev environment.
  */
-gulp.task('serve', 'Serve for the dev environment', ['sass', 'watch'], function () {
+gulp.task('serve', 'Serve for the dev environment', ['sass','watch'], function () {
     startBrowserSync(['.tmp', 'src', 'jspm_packages', './']);
 });
 gulp.task('default', 'Watch files and build environment', ['serve']);
@@ -362,7 +364,7 @@ gulp.task('serve:dist', 'Serve the prod environment', ['build'], function () {
  */
 gulp.task('build', 'Build application for deployment', function (cb) {
     runSequence(
-        ['clean' ,'config'],
+        ['clean', 'config'],
         ['compile', 'extras', 'images'],
         cb
     );

@@ -1,7 +1,3 @@
-//#places-form {
-//  width: 320px;
-//}
-
 #places-form .form-block {
   width: 250px;
 }
@@ -135,4 +131,85 @@
 
 .button.green {
   background-color: #0f8f0b;
+}
+
+.place-details-wrapper {
+  @extend .flex-column;
+  position: absolute;
+  width: 700px;
+  height: 500px;
+  padding: 0 15px;
+  background: #f8f8f8;
+  border: solid 1px #ceced5;
+  border-radius: 2px;
+  transition: .3s linear all;
+  font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  top: 100px;
+}
+
+.place-details-wrapper .close {
+  @extend .flex-row;
+  justify-content: flex-end;
+  text-decoration: underline;
+  margin: 5px 5px 15px 5px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #0000AA;
+}
+
+#place-details-content .form-input {
+  @extend .flex-row;
+  justify-content: flex-start;
+
+  .title {
+    width: 150px;
+  }
+
+  textarea {
+    border-radius: 2px;
+  }
+}
+
+#place-details-content {
+  width: 600px;
+
+  #button {
+    @extend .flex-row;
+    justify-content: flex-end;
+    margin-top: 20px !important;
+  }
+}
+
+#interests-list {
+  width: 100%;
+  overflow: scroll;
+  background: white;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+}
+
+#place-details-content #interests {
+  height: 100px;
+  overflow: scroll;
+}
+
+.interest-row-wrapper {
+  height: 20px;
+  padding: 0 5px 3px;
+  border-bottom: 1px solid #cccccc;
+
+}
+
+.interest-row-content {
+  @extend .flex-row;
+  align-items: center;
+  input {
+    margin: 0 !important;
+  }
+
+  span {
+    display: block;
+    margin-left: 10px;
+  }
 }

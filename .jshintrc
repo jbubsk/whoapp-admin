@@ -20,6 +20,7 @@
     "esnext": true,
     "jquery": false,
     "globals": {
+        "alert" : false,
         "ApplicationConfiguration": false,
         "angular": false,
         "after": false,

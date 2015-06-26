@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "scripts": {
     "test": "gulp test",
-    "dev": "ENV=dev gulp build --local && gulp serve",
-    "dev_remote": "ENV=dev gulp && gulp serve",
-    "serve": "ENV=dev gulp serve --local",
-    "prod_local": "gulp serve:dist --local",
-    "prod_remote": "HOST='http://whoappbackend-jbubsk.rhcloud.com' gulp && gulp serve:dist"
+    "dev": "MODE=local ENV=dev gulp build  && gulp serve",
+    "dev_remote": "MODE=remote ENV=dev gulp build && gulp serve",
+    "serve": "MODE=local ENV=dev gulp serve ",
+    "prod_local": "MODE=local gulp serve:dist ",
+    "prod_remote": "MODE=remote HOST='http://whoappbackend-jbubsk.rhcloud.com' gulp && gulp serve:dist"
   },
   "devDependencies": {
     "browser-sync": "^2.7.1",
@@ -52,8 +52,7 @@
     "plato": "^1.4.0",
     "run-sequence": "^1.1.0",
     "semver": "^4.3.4",
-    "systemjs-builder": "^0.10.6",
-    "yargs": "^3.10.0"
+    "systemjs-builder": "^0.10.6"
   },
   "engines": {
     "node": ">=0.10.0"

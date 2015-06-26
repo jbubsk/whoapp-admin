@@ -1,0 +1,43 @@
+<div ng-show="placeDetails.show"
+     ng-style="placeDetails.styles"
+     class="modal-content place-details-wrapper">
+
+    <div class="close" ng-click="placeDetails.close()">Закрыть</div>
+    <div id="place-details-content">
+        <div id="place-name" class="form-input">
+            <span class="title">Название</span>
+            <input type="text" ng-model="placeDetails.place.name"/>
+        </div>
+        <div id="description" class="form-input">
+            <span class="title">Описание</span>
+            <textarea ng-model="placeDetails.place.description" maxlength="350"></textarea>
+        </div>
+        <div id="phone" class="form-input">
+            <span class="title">Телефон</span>
+            <input type="text" ng-model="placeDetails.place.phone"/>
+        </div>
+        <div id="site§" class="form-input">
+            <span class="title">Сайт</span>
+            <input type="text" ng-model="placeDetails.place.site"/>
+        </div>
+        <div id="proposition" class="form-input">
+            <span class="title">Специальные предложения</span>
+            <textarea ng-model="placeDetails.place.proposition" maxlength="255"></textarea>
+        </div>
+        <div id="interests" class="form-input">
+            <span class="title">Категории</span>
+
+            <div id="interests-list">
+                <div ng-repeat="interest in placeDetails.interests" class="interest-row-wrapper">
+                    <div class="interest-row-content">
+                        <input type="checkbox" ng-model="interest.selected"/>
+                        <span ng-bind="interest.name"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="button">
+            <a class="button tiny" ng-click="placeDetails.save()">Сохранить</a>
+        </div>
+    </div>
+</div>

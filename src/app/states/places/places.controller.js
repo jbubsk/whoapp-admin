@@ -7,6 +7,7 @@ class PlacesController {
         this.placesService = $injector.get('PlacesService');
         this.logger = $injector.get('$log');
         this.images = $injector.get('IMAGES');
+        this.state = $injector.get('$state');
 
         this.model = {
             name: '',
@@ -23,7 +24,7 @@ class PlacesController {
         this.listLoader = true;
         this.addPlaceLoader = false;
         this.collection = [];
-        this.getPlaces();
+        this._getPlaces();
     }
 
     search() {
@@ -48,18 +49,6 @@ class PlacesController {
         }
     }
 
-    isModelValid() {
-        var _this = this, model = _this.model;
-
-        if (model.name.trim().length === 0) {
-            _this.error = 'Заполните, пожалуйста, название';
-        } else if (model.address.trim().length === 0) {
-            _this.error = 'Заполните, пожалуйста, адрес';
-        }
-
-        return _this.error.length === 0;
-    }
-
     add() {
         var _this = this,
             model = {
@@ -71,7 +60,7 @@ class PlacesController {
                 longitude: _this.model.longitude.toFixed(7)
             };
 
-        if (_this.isModelValid()) {
+        if (_this._isModelValid()) {
             _this.addPlaceLoader = true;
             _this.placesService.addPlace(model)
                 .then(function (data) {
@@ -86,7 +75,23 @@ class PlacesController {
         }
     }
 
-    getPlaces() {
+    transition(item) {
+        this.state.go('places.details', {id: item.id});
+    }
+
+    _isModelValid() {
+        var _this = this, model = _this.model;
+
+        if (model.name.trim().length === 0) {
+            _this.error = 'Заполните, пожалуйста, название';
+        } else if (model.address.trim().length === 0) {
+            _this.error = 'Заполните, пожалуйста, адрес';
+        }
+
+        return _this.error.length === 0;
+    }
+
+    _getPlaces() {
         var _this = this;
         this.placesService.getPlaces().then(function (data) {
             _this.collection = data.result;

@@ -21,13 +21,12 @@ class InterestsController {
     getInterests() {
         var _this = this;
 
-        _this.service.getInterests().then(
-            function (data) {
-                _this.collection = data.result;
-                _this.listLoader = false;
-                _this._checkEmpty();
-                _this.logger.debug(_this.collection);
-            });
+        _this.service.getInterests().then(data => {
+            _this.collection = data;
+            _this.listLoader = false;
+            _this._checkEmpty();
+            _this.logger.debug(_this.collection);
+        });
     }
 
     add() {

@@ -1,6 +1,18 @@
 @import "places";
 @import "login";
 @import "users";
+@import "animations";
+
+@media screen and (max-width: 900px) {
+  .page-wrapper {
+    width: 900px;
+  }
+}
+
+#landing-place {
+  @extend .flex-column;
+  align-items: center;
+}
 
 .error-msg {
   color: red;
@@ -34,6 +46,11 @@ hr {
   justify-content: center;
 }
 
+.flex-row{
+  display: flex;
+  flex-flow: row;
+}
+
 .flex-column {
   display: flex;
   flex-flow: column;
@@ -42,6 +59,7 @@ hr {
 .page-wrapper {
   @extend .flex-row-center;
   margin-top: 50px;
+  max-width: 1000px;
 }
 
 .greeting {
@@ -77,6 +95,7 @@ hr {
   border-bottom: solid 1px #d7d7d7;
   padding: 0 5px;
   position: relative;
+  cursor: pointer;
 
   div {
     @extend .flex-row-center;
@@ -92,30 +111,6 @@ hr {
 #collection .item-row:first-child {
   border-top: solid 1px rgb(232, 230, 230);
   border-radius: 2px;
-}
-
-.animation {
-  -webkit-transition: 400ms;
-  -moz-transition: 400ms;
-  -ms-transition: 400ms;
-  -o-transition: 400ms;
-  transition: 400ms;
-}
-
-.animation.ng-enter {
-  left: 480px;
-}
-
-.animation.ng-enter.animation.ng-enter-active {
-  left: 0;
-}
-
-.animation.ng-leave {
-  left: 0;
-}
-
-.animation.ng-leave.animation.ng-leave-active {
-  left: 480px;
 }
 
 .item-row .delete-item {
@@ -170,7 +165,7 @@ hr {
   flex-flow: column;
   margin-top: 0;
 
-  input {
+  input[type='text'], textarea {
     height: 30px !important;
     margin-bottom: 5px !important;
     border-radius: 2px !important;
