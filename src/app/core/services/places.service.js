@@ -27,7 +27,9 @@ class PlacesService {
                     method: 'GET', withCredentials: true
                 }
             }
-        ).get().$promise;
+        ).get().$promise.then(result => {
+                return result.result[0];
+            });
     }
 
     addPlace(model) {
@@ -55,7 +57,7 @@ class PlacesService {
 
     updatePlace(model) {
         return this.resource(
-            config.serviceHost + '/api/places',
+            config.serviceHost + '/api/places', null,
             {
                 'update': {
                     method: 'PUT', withCredentials: true

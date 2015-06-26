@@ -10,10 +10,9 @@ function placeDetailsRoute($stateProvider) {
             auth: true,
             resolve: {
                 place: function (PlacesService, $stateParams) {
-                    return PlacesService.getPlace($stateParams.id)
-                        .then(function (result) {
-                            return result.result[0];
-                        });
+                    return PlacesService.getPlace($stateParams.id).then(data => {
+                        return data;
+                    });
                 },
                 interests: function (InterestsService) {
                     return InterestsService.getInterests().then(data => {

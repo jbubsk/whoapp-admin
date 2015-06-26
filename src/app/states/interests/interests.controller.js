@@ -1,10 +1,10 @@
 'use strict';
 
 class InterestsController {
-    constructor(InterestsService, $log) {
+    constructor($scope, InterestsService, $log) {
+        this.scope = $scope;
         this.service = InterestsService;
         this.logger = $log;
-
         this.model = {
             name: ''
         };
@@ -19,13 +19,13 @@ class InterestsController {
     }
 
     getInterests() {
-        var _this = this;
-
-        _this.service.getInterests().then(data => {
-            _this.collection = data;
-            _this.listLoader = false;
-            _this._checkEmpty();
-            _this.logger.debug(_this.collection);
+        this.service.getInterests().then(data => {
+            this.collection = data;
+            this.scope.$apply(() => {
+                this.listLoader = false;
+            });
+            this._checkEmpty();
+            this.logger.debug(this.collection);
         });
     }
 
@@ -51,6 +51,6 @@ class InterestsController {
         this.emptyList = this.collection.length === 0;
     }
 }
-InterestsController.$inject = ['InterestsService', '$log'];
+InterestsController.$inject = ['$scope', 'InterestsService', '$log'];
 
 export default InterestsController;

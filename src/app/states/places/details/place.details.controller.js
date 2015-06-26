@@ -28,7 +28,7 @@ class PlaceDetailsController {
     }
 
     save() {
-        var service = this.injector.get('PlacesServices'),
+        var service = this.injector.get('PlacesService'),
             interestsIds = [];
         this.interests.forEach(item => {
             if (item.selected) {
@@ -39,11 +39,8 @@ class PlaceDetailsController {
         this.injector.get('$log').debug(interestsIds);
         service.updatePlace(this.place).then(
                 result => {
-
-            },
-                error => {
-
-            });
+                this.injector.get('$state').go('places');
+            })
     }
 }
 PlaceDetailsController.$inject = ['$injector', 'place', 'interests'];

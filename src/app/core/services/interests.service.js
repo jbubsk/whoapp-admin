@@ -7,19 +7,20 @@ class InterestsService {
         this.resource = $resource;
         this.$q = $q;
         this.cache = [];
+        console.log('interest service');
     }
 
-    getInterests() {
+    getInterests(params) {
         return new Promise((resolve, reject) => {
-            if (this.cache.length > 0) {
+            if (this.cache.length > 0 && (!params || (params && params.cache !== false))) {
                 resolve(this.cache);
             } else {
                 this.resource(config.serviceHost + '/api/interests', null, {
                     'get': {method: 'GET', withCredentials: true}
                 }).get().$promise.then(result => {
-                    this.cache = result.result;
-                    resolve(this.cache);
-                });
+                        this.cache = result.result;
+                        resolve(this.cache);
+                    });
             }
         });
     }
