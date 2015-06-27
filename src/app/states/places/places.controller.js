@@ -74,7 +74,7 @@ class PlacesController {
         }
     }
 
-    transition(item, event) {
+    transition(item) {
         this.state.go('places.details', {id: item.id});
     }
 
