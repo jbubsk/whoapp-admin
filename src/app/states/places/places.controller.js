@@ -32,15 +32,15 @@ class PlacesController {
 
         if (model.cityId) {
             _this.service.getAddressWithCoordinates(model.city + ', ' + model.address).then(
-                function (result) {
-                    _this.$scope.$apply(function () {
+                    result => {
+                    _this.$scope.$apply(() => {
                         model.latitude = result.coordinates[0];
                         model.longitude = result.coordinates[1];
                         model.suggestedAddress = result.address;
                         _this.showSearchResults = true;
                     });
                 },
-                function (err) {
+                    err => {
                     _this.logger.debug({message: 'Ошибка', error: err});
                 }
             );
@@ -50,66 +50,61 @@ class PlacesController {
     }
 
     add() {
-        var _this = this,
-            model = {
-                name: _this.model.name,
-                city: _this.model.city,
-                cityId: _this.model.cityId,
-                address: _this.model.suggestedAddress,
-                latitude: _this.model.latitude.toFixed(7),
-                longitude: _this.model.longitude.toFixed(7)
-            };
+        var model = {
+            name: this.model.name,
+            city: this.model.city,
+            cityId: this.model.cityId,
+            address: this.model.suggestedAddress,
+            latitude: this.model.latitude.toFixed(7),
+            longitude: this.model.longitude.toFixed(7)
+        };
 
-        if (_this._isModelValid()) {
-            _this.addPlaceLoader = true;
-            _this.placesService.addPlace(model)
-                .then(function (data) {
+        if (this._isModelValid()) {
+            this.addPlaceLoader = true;
+            this.placesService.addPlace(model)
+                .then(data => {
                     model.id = data.result.id;
-                    _this.collection.unshift(model);
-                    _this._checkEmpty();
-                    _this.addPlaceLoader = false;
-                    _this._resetState();
-                }, function () {
-                    _this.addPlaceLoader = false;
+                    this.collection.unshift(model);
+                    this._checkEmpty();
+                    this.addPlaceLoader = false;
+                    this._resetState();
+                }, () => {
+                    this.addPlaceLoader = false;
                 });
         }
     }
 
-    transition(item) {
+    transition(item, event) {
         this.state.go('places.details', {id: item.id});
-        this.logger.debug('transition to place.details');
     }
 
     _isModelValid() {
-        var _this = this, model = _this.model;
+        var model = this.model;
 
         if (model.name.trim().length === 0) {
-            _this.error = 'Заполните, пожалуйста, название';
+            this.error = 'Заполните, пожалуйста, название';
         } else if (model.address.trim().length === 0) {
-            _this.error = 'Заполните, пожалуйста, адрес';
+            this.error = 'Заполните, пожалуйста, адрес';
         }
 
-        return _this.error.length === 0;
+        return this.error.length === 0;
     }
 
     _getPlaces() {
-        var _this = this;
-        this.placesService.getPlaces().then(function (data) {
-            _this.collection = data.result;
-            _this._checkEmpty();
-            _this._resetState();
+        this.placesService.getPlaces().then(data => {
+            this.collection = data.result;
+            this._checkEmpty();
+            this._resetState();
         });
     }
 
     _resetState() {
-        var _this = this;
-
-        angular.forEach(_this.model, function (value, key) {
-            _this.model[key] = '';
+        angular.forEach(this.model, (value, key) => {
+            this.model[key] = '';
         });
-        _this.cityEditorDisabled = false;
-        _this.showSearchResults = false;
-        _this.listLoader = false;
+        this.cityEditorDisabled = false;
+        this.showSearchResults = false;
+        this.listLoader = false;
     }
 
     _checkEmpty() {

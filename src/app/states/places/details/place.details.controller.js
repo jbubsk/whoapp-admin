@@ -29,12 +29,6 @@ class PlaceDetailsController {
         }
     }
 
-    _unselectInterests() {
-        this.interests.forEach(item => {
-            item.selected = false;
-        });
-    }
-
     close() {
         this.injector.get('$state').go('places');
     }
@@ -51,6 +45,12 @@ class PlaceDetailsController {
         this.injector.get('$log').debug(interestsIds);
         service.updatePlace(this.place).then(() => {
             this.injector.get('$state').go('places');
+        });
+    }
+
+    _unselectInterests() {
+        this.interests.forEach(item => {
+            item.selected = false;
         });
     }
 }

@@ -13,7 +13,7 @@ function deleteItemDirective($injector) {
                 $img = element.find('img');
 
             $img.attr('src', images.delete);
-            $img.one('click', function () {
+            $img.one('click', function (event) {
 
                 $img.attr('src', images.loader);
                 service.deleteItem(id).then(
@@ -31,6 +31,7 @@ function deleteItemDirective($injector) {
                         $img.attr('src', images.delete);
                         logger.debug(err);
                     });
+                event.stopPropagation();
             });
         }
     };

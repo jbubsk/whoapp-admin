@@ -63,7 +63,7 @@
         <div class="list-side">
             <div id="collection" ng-if="!ctrl.listLoader">
                 <div ng-repeat="item in ctrl.collection" class="item-row row-animation"
-                     ng-click="ctrl.transition(item)">
+                     ng-click="ctrl.transition(item, $event)">
                     <div delete-item service="PlacesService"></div>
                     <div class="item-name">{{item.name}}</div>
                     <div class="place-address">{{item.address}}</div>
