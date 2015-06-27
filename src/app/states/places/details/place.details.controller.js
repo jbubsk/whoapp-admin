@@ -11,14 +11,27 @@ class PlaceDetailsController {
         $injector.get('$timeout')(() => {
             this.show = true;
         }, 100);
+        this._unselectInterests();
+
+        if (this.place.interestsIds) {
+            var placeInterests = this.place.interestsIds.split(',');
+            this.interests.forEach(item => {
+                if (this.place.interestsIds) {
+                    placeInterests.every(id => {
+                        if (item.id === parseInt(id, 10)) {
+                            item.selected = true;
+                            return false;
+                        }
+                        return true;
+                    });
+                }
+            });
+        }
+    }
+
+    _unselectInterests() {
         this.interests.forEach(item => {
-            if (this.place.interestsIds) {
-                this.place.interestsIds.split(',').forEach(id => {
-                    if (item.id === parseInt(id, 10)) {
-                        item.selected = true;
-                    }
-                });
-            }
+            item.selected = false;
         });
     }
 
