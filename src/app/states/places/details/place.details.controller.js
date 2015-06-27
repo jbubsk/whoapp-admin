@@ -20,7 +20,6 @@ class PlaceDetailsController {
                 });
             }
         });
-        this.injector.get('$log').debug(this.interests);
     }
 
     close() {
@@ -37,10 +36,9 @@ class PlaceDetailsController {
         });
         this.place.interestsIds = interestsIds;
         this.injector.get('$log').debug(interestsIds);
-        service.updatePlace(this.place).then(
-                result => {
-                this.injector.get('$state').go('places');
-            })
+        service.updatePlace(this.place).then(() => {
+            this.injector.get('$state').go('places');
+        });
     }
 }
 PlaceDetailsController.$inject = ['$injector', 'place', 'interests'];

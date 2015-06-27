@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "scripts": {
     "test": "gulp test",
-    "dev": "MODE=local ENV=dev gulp build  && gulp serve",
-    "dev_remote": "MODE=remote ENV=dev gulp build && gulp serve",
-    "serve": "MODE=local ENV=dev gulp serve ",
+    "dev_local": "MODE=local gulp serve",
+    "dev_remote": "MODE=remote gulp serve",
     "prod_local": "MODE=local gulp serve:dist ",
-    "prod_remote": "MODE=remote HOST='http://whoappbackend-jbubsk.rhcloud.com' gulp && gulp serve:dist"
+    "prod_remote": "MODE=remote gulp serve:dist",
+    "prod_build": "MODE=remote gulp build"
   },
   "devDependencies": {
     "browser-sync": "^2.7.1",

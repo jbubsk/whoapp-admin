@@ -342,7 +342,7 @@ gulp.task('config', 'setup config variables', function () {
 /**
  * The 'serve' task serve the dev environment.
  */
-gulp.task('serve', 'Serve for the dev environment', ['sass','watch'], function () {
+gulp.task('serve', 'Serve for the dev environment', ['config', 'sass', 'watch'], function () {
     startBrowserSync(['.tmp', 'src', 'jspm_packages', './']);
 });
 gulp.task('default', 'Watch files and build environment', ['serve']);

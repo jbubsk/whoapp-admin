@@ -77,6 +77,7 @@ class PlacesController {
 
     transition(item) {
         this.state.go('places.details', {id: item.id});
+        this.logger.debug('transition to place.details');
     }
 
     _isModelValid() {

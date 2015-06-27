@@ -7,11 +7,10 @@ class InterestsService {
         this.resource = $resource;
         this.$q = $q;
         this.cache = [];
-        console.log('interest service');
     }
 
     getInterests(params) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             if (this.cache.length > 0 && (!params || (params && params.cache !== false))) {
                 resolve(this.cache);
             } else {
