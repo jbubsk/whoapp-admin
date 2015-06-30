@@ -1,27 +1,27 @@
-<div class="page-wrapper row" ng-controller="InterestsController as ctrl">
-    <div id="interests-form" class="form-side">
-        <div>
-            <div class="form-input">
-                <input type="text" ng-model="ctrl.model.name" placeholder="Название"/>
-            </div>
-            <div class="form-input">
-                <a class="button tiny" ng-click="ctrl.add()">Добавить</a>
-            </div>
-        </div>
-        <div class="form-block error-block" ng-if="ctrl.errorMessage.length > 0">
-            <span ng-bind="ctrl.errorMessage"></span>
-        </div>
-    </div>
-    <div class="list-side">
-        <div id="collection" ng-if="!ctrl.listLoader">
-            <div ng-repeat="item in ctrl.collection" class="item-row row-animation">
-                <div delete-item service="InterestsService"></div>
-                <div class="item-name">{{item.name}}</div>
+<div>
+    <div class="page-wrapper row" ng-controller="InterestsController as ctrl">
+        <div class="form-side" id="interests-form">
+            <div class="form-block">
+                <div class="form-input">
+                    <input ng-model="ctrl.model.name" placeholder="Название" type="text"/>
+                </div>
+                <div class="form-input">
+                    <a class="button tiny" ng-click="ctrl.add()">Добавить</a>
+                </div>
+                <div error-block></div>
             </div>
         </div>
-        <div ng-if="ctrl.emptyList">
-            Здесь пока нет ни одной записи
+        <div class="list-side">
+            <div editors-list id="collection" ng-if="!ctrl.listLoader">
+                <div class="item-row row-animation" ng-repeat="item in ctrl.collection">
+                    <div delete-item service="InterestsService"></div>
+                    <div editor model="item" class="item-name"></div>
+                </div>
+            </div>
+            <div ng-if="ctrl.emptyList">
+                Здесь пока нет ни одной записи
+            </div>
+            <div class="loader" id="places-loader" ng-if="ctrl.listLoader"/>
         </div>
-        <div id="places-loader" class="loader" ng-if="ctrl.listLoader"></div>
     </div>
 </div>

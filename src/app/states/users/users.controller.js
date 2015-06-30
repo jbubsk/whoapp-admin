@@ -1,7 +1,10 @@
 'use strict';
 
-class UsersController {
+import ErrorHandler from '../../core/error.handler';
+
+class UsersController extends ErrorHandler {
     constructor(UsersService, $log) {
+        super();
         this.service = UsersService;
         this.logger = $log;
 
@@ -10,48 +13,42 @@ class UsersController {
             password: '',
             email: ''
         };
-        this.errorMessage = '';
         this.collection = [];
         this.listLoader = true;
         this.getUsers();
 
-        this.errors = {
-            1062: 'Данное имя пользователя уже существует'
-        };
+        this.errors[1062] = 'Данное имя пользователя уже существует';
     }
 
     getUsers() {
-        var _this = this;
-
-        _this.service.getUsers().then(
-            function (data) {
-                _this.collection = data.result;
-                _this.listLoader = false;
-                _this._checkEmpty();
-                _this.logger.debug(_this.collection);
+        this.service.getUsers().then(
+            (data) => {
+                this.collection = data.result;
+                this.listLoader = false;
+                this._checkEmpty();
+                this.logger.debug(this.collection);
             },
-            function (error) {
-                _this.listLoader = false;
-                _this.logger.debug(error);
+            (errorCode) => {
+                this.listLoader = false;
+                this.logger.debug(errorCode);
+                this.handleError(errorCode);
             });
     }
 
     add() {
-        var _this = this;
-
-        _this.errorMessage = '';
-        _this.service.addItem(_this.model).then(
-            function (data) {
+        this.hideError();
+        this.service.addItem(this.model).then(
+            (data) => {
                 var addedItem = {
                     id: data.result.id,
-                    username: _this.model.username,
+                    username: this.model.username,
                     status: data.result.status,
                     lastDateActivity: data.result.lastDateActivity
                 };
-                _this.collection.unshift(addedItem);
+                this.collection.unshift(addedItem);
             },
-            function (errCode) {
-                _this.errorMessage = _this.errors[errCode];
+            (errorCode) => {
+                this.handleError(errorCode);
             }
         );
     }

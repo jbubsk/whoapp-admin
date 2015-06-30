@@ -15,7 +15,7 @@ function placeDetailsRoute($stateProvider) {
                     });
                 }],
                 interests: ['InterestsService', function (InterestsService) {
-                    return InterestsService.getInterests().then(data => {
+                    return InterestsService.get().then(data => {
                         return data;
                     });
                 }]

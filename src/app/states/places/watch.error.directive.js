@@ -10,7 +10,7 @@ function watchErrorDirective() {
                 function () {
                     return ngModel.$modelValue;
                 }, function () {
-                    scope.ctrl.error = '';
+                    scope.ctrl.hideError();
                 });
         }
     };

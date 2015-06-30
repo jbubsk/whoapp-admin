@@ -1,16 +1,19 @@
 <div class="page-wrapper" ng-controller="LoginController as ctrl">
     <div id="login-form">
         <form>
-            <div class="error-msg">{{ctrl.errorMsg}}</div>
+            <div error-block border="no"></div>
+
             <div class="form-input">
                 <input type="text" name="username" placeholder="Логин"
                        ng-model="ctrl.model.username"
-                       auto-focus>
+                       auto-focus
+                       watch-error>
             </div>
             <div class="form-input">
                 <input type="password" name="password" placeholder="Пароль"
                        ng-model="ctrl.model.password"
-                       on-enter="ctrl.login()">
+                       on-enter="ctrl.login()"
+                       watch-error>
             </div>
             <div class="form-input">
                 <a class="button tiny" ng-click="ctrl.login()">Войти</a>

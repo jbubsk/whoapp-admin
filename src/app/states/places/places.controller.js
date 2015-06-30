@@ -1,7 +1,10 @@
 'use strict';
 
-class PlacesController {
+import ErrorHandler from '../../core/error.handler';
+
+class PlacesController extends ErrorHandler{
     constructor($scope, $injector) {
+        super();
         this.$scope = $scope;
         this.service = $injector.get('YandexService');
         this.placesService = $injector.get('PlacesService');
@@ -18,7 +21,6 @@ class PlacesController {
             longitude: '',
             suggestedAddress: ''
         };
-        this.error = '';
         this.cityEditorDisabled = false;
         this.showSearchResults = false;
         this.listLoader = true;
@@ -28,24 +30,27 @@ class PlacesController {
     }
 
     search() {
-        var _this = this, model = _this.model;
+        var model = this.model;
 
         if (model.cityId) {
-            _this.service.getAddressWithCoordinates(model.city + ', ' + model.address).then(
+            this.service.getAddressWithCoordinates(model.city + ', ' + model.address).then(
                     result => {
-                    _this.$scope.$apply(() => {
+                    this.$scope.$apply(() => {
                         model.latitude = result.coordinates[0];
                         model.longitude = result.coordinates[1];
                         model.suggestedAddress = result.address;
-                        _this.showSearchResults = true;
+                        this.showSearchResults = true;
                     });
                 },
                     err => {
-                    _this.logger.debug({message: 'Ошибка', error: err});
+                    this.logger.debug({
+                        message: 'Ошибка',
+                        error: err
+                    });
                 }
             );
         } else {
-            _this.error = 'Выберите, пожалуйста, город';
+            this.handleError('Выберите, пожалуйста, город');
         }
     }
 
@@ -75,19 +80,21 @@ class PlacesController {
     }
 
     transition(item) {
-        this.state.go('places.details', {id: item.id});
+        this.state.go('places.details', {
+            id: item.id
+        });
     }
 
     _isModelValid() {
         var model = this.model;
 
         if (model.name.trim().length === 0) {
-            this.error = 'Заполните, пожалуйста, название';
+            this.handleError('Заполните, пожалуйста, название');
         } else if (model.address.trim().length === 0) {
-            this.error = 'Заполните, пожалуйста, адрес';
+            this.handleError('Заполните, пожалуйста, адрес');
         }
 
-        return this.error.length === 0;
+        return this.errorMessage.length === 0;
     }
 
     _getPlaces() {

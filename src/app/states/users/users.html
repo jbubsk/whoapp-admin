@@ -1,6 +1,6 @@
 <div class="page-wrapper row" ng-controller="UsersController as ctrl">
-    <div id="interests-form" class="form-side">
-        <div>
+    <div id="users-form" class="form-side">
+        <div class="form-block">
             <div class="form-input">
                 <input type="text" ng-model="ctrl.model.username" placeholder="Имя пользователя"/>
             </div>
@@ -13,9 +13,7 @@
             <div class="form-input">
                 <a class="button tiny" ng-click="ctrl.add()">Добавить</a>
             </div>
-        </div>
-        <div class="form-block error-block" ng-if="ctrl.errorMessage.length > 0">
-            <span ng-bind="ctrl.errorMessage"></span>
+            <div error-block></div>
         </div>
     </div>
     <div class="list-side">

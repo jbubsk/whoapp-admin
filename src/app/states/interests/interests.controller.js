@@ -1,48 +1,43 @@
 'use strict';
 
-class InterestsController {
+import ErrorHandler from '../../core/error.handler';
+
+class InterestsController extends ErrorHandler {
     constructor($scope, InterestsService, $log) {
+        super();
         this.scope = $scope;
         this.service = InterestsService;
         this.logger = $log;
         this.model = {
             name: ''
         };
-        this.errorMessage = '';
         this.collection = [];
         this.listLoader = true;
         this.getInterests();
 
-        this.errors = {
-            1062: 'Данный интерес уже существует'
-        };
     }
 
     getInterests() {
-        this.service.getInterests().then(data => {
+        this.service.get().then(data => {
             this.collection = data;
-            this.scope.$apply(() => {
-                this.listLoader = false;
-            });
+            this.listLoader = false;
             this._checkEmpty();
             this.logger.debug(this.collection);
         });
     }
 
     add() {
-        var _this = this;
-
-        _this.errorMessage = '';
-        _this.service.addItem(_this.model).then(
-            function (data) {
+        this.errorMessage = '';
+        this.service.add(this.model).then(
+                data => {
                 var addedItem = {
                     id: data.result.id,
-                    name: _this.model.name
+                    name: this.model.name
                 };
-                _this.collection.unshift(addedItem);
+                this.collection.unshift(addedItem);
             },
-            function (errCode) {
-                _this.errorMessage = _this.errors[errCode];
+                errCode => {
+                this.handleError(errCode);
             }
         );
     }

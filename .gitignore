@@ -4,6 +4,8 @@ jspm_packages/
 src/app.config.json
 .sass-cache/
 .tmp/
+.tags*
+tags
 dist/
 .idea/
 *.log

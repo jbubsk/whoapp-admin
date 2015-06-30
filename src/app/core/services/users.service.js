@@ -15,7 +15,7 @@ class UsersService {
         }).get().$promise;
     }
 
-    deleteItem(id) {
+    remove(id) {
         return this.resource(this.serviceUrl + '/:id', {id: id}, {
             'delete': {method: 'DELETE', withCredentials: true}
         }).delete().$promise;
@@ -31,8 +31,8 @@ class UsersService {
                 deferred.resolve(data);
             },
             function (err) {
-                if (err.data && err.data.errorCode) {
-                    deferred.reject(err.data.errorCode);
+                if (err.data && err.data.code) {
+                    deferred.reject(err.data.code);
                 }
             }
         );

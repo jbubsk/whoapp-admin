@@ -2,6 +2,7 @@
 @import "login";
 @import "users";
 @import "animations";
+@import "interests";
 
 @media screen and (max-width: 900px) {
   .page-wrapper {
@@ -18,17 +19,18 @@
   color: red;
   margin: 5px;
   font-size: 13px;
+  border: none !important;
 }
 
 .error-block {
-  @extend .error-msg;
   @extend .flex-row-center;
-  width: 290px;
+  color: red;
+  font-size: 13px;
   border: solid 1px red;
   border-radius: 2px;
   height: 45px;
   font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
-
+  margin: 0;
   span {
     align-self: center;
   }
@@ -46,7 +48,7 @@ hr {
   justify-content: center;
 }
 
-.flex-row{
+.flex-row {
   display: flex;
   flex-flow: row;
 }
@@ -58,8 +60,9 @@ hr {
 
 .page-wrapper {
   @extend .flex-row-center;
-  margin-top: 50px;
-  max-width: 1000px;
+  margin-top: 50px !important;
+  padding: 0 10px;
+  max-width: 1000px !important;
 }
 
 .greeting {
@@ -96,7 +99,6 @@ hr {
   padding: 0 5px;
   position: relative;
   cursor: pointer;
-
   div {
     @extend .flex-row-center;
     align-self: center;
@@ -142,42 +144,42 @@ hr {
 .item-row .user-date {
   justify-content: flex-start !important;
   flex-grow: 1;
-
 }
 
 .item-row .user-status {
   @extend .flex-row-center;
   margin-left: 10px;
-
 }
 
 .form-side {
   @extend .flex-column;
   justify-content: center;
-  margin: 0 30px;
   padding: 0 5px;
+  border-right: 1px solid rgb(240, 240, 240);
   width: 320px;
   height: 400px;
+}
+
+.form-block {
+  width: 280px;
 }
 
 .form-input {
   @extend .flex-row-center;
   flex-flow: column;
   margin-top: 0;
-
-  input[type='text'], textarea {
+  input[type='text'],input[type='password'],
+  textarea {
     height: 30px !important;
     margin-bottom: 5px !important;
     border-radius: 2px !important;
   }
-
   a {
     border-radius: 2px !important;
   }
-
 }
 
 /* It's the markers used by gulp-inject to inject
    all your sass files automatically */
-/*// injector
-// endinjector*/
+/*/
+/ injector// endinjector*/

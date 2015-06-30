@@ -16,8 +16,8 @@ function deleteItemDirective($injector) {
             $img.one('click', function (event) {
 
                 $img.attr('src', images.loader);
-                service.deleteItem(id).then(
-                    function (data) {
+                service.remove(id).then(
+                    (data) => {
                         logger.debug(data);
                         angular.forEach(scope.ctrl.collection, function (value, key) {
                             if (value.id === id) {
@@ -27,8 +27,10 @@ function deleteItemDirective($injector) {
                                 }
                             }
                         });
-                    }, function (err) {
+                    },
+                    (err) => {
                         $img.attr('src', images.delete);
+                        scope.ctrl.handleError(err);
                         logger.debug(err);
                     });
                 event.stopPropagation();

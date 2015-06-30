@@ -15,21 +15,21 @@ class AuthService {
         this.resource(config.serviceHost + '/auth/login', null, {
             login: {method: 'POST', withCredentials: true}
         }).login(model).$promise.then(
-            function (data) {
+            (data) => {
                 this.session.create(data.username);
                 this.logger.debug({
                     info: 'New session is created.',
                     result: data.result
                 });
                 deferred.resolve(data);
-            }.bind(this),
-            function (error) {
+            },
+            (error) => {
                 this.logger.debug({
                     info: 'Authentication is failed.',
                     result: error.data
                 });
-                deferred.reject(error);
-            }.bind(this));
+                deferred.reject({errorCode: error.status});
+            });
 
         return deferred.promise;
     }

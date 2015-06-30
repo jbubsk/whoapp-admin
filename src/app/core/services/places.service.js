@@ -4,8 +4,9 @@ import config from '../config';
 
 class PlacesService {
 
-    constructor($resource) {
+    constructor($resource, $q) {
         this.resource = $resource;
+        this.$q = $q;
     }
 
     getPlaces() {
@@ -67,6 +68,6 @@ class PlacesService {
     }
 }
 
-PlacesService.$inject = ['$resource'];
+PlacesService.$inject = ['$resource', '$q'];
 
 export default PlacesService;
