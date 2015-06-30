@@ -1,70 +1,34 @@
 'use strict';
 
-import config from '../config';
+import CoreService from './core.service';
 
-class PlacesService {
+class PlacesService extends CoreService {
 
     constructor($resource, $q) {
-        this.resource = $resource;
-        this.$q = $q;
+        super($q, $resource);
+        this.setUp('/api/places');
     }
 
     getPlaces() {
-        return this.resource(
-            config.serviceHost + '/api/places', null,
-            {
-                'get': {
-                    method: 'GET', withCredentials: true
-                }
-            }
-        ).get().$promise;
+        return this.getResource().get().$promise;
     }
 
     getPlace(id) {
-        return this.resource(
-            config.serviceHost + '/api/places/' + id, null,
-            {
-                'get': {
-                    method: 'GET', withCredentials: true
-                }
-            }
-        ).get().$promise.then(result => {
+        return this.getResource().get({id:id}).$promise.then(result => {
                 return result.result[0];
             });
     }
 
     addPlace(model) {
-        return this.resource(
-            config.serviceHost + '/api/places', null,
-            {
-                'post': {
-                    method: 'POST', withCredentials: true
-                }
-            }
-        ).post(model).$promise;
+        return this.getResource().post(model).$promise;
     }
 
-    deleteItem(id) {
-        return this.resource(
-            config.serviceHost + '/api/places/:id',
-            {id: id},
-            {
-                'delete': {
-                    method: 'DELETE', withCredentials: true
-                }
-            }
-        ).delete().$promise;
+    remove(id) {
+        return this.getResource().delete({id:id}).$promise;
     }
 
     updatePlace(model) {
-        return this.resource(
-            config.serviceHost + '/api/places', null,
-            {
-                'update': {
-                    method: 'PUT', withCredentials: true
-                }
-            }
-        ).update(model).$promise;
+        return this.getResource().update(model).$promise;
     }
 }
 

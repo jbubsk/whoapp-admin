@@ -2,7 +2,7 @@
 
 import ErrorHandler from '../../core/error.handler';
 
-class PlacesController extends ErrorHandler{
+class PlacesController extends ErrorHandler {
     constructor($scope, $injector) {
         super();
         this.$scope = $scope;
@@ -98,11 +98,16 @@ class PlacesController extends ErrorHandler{
     }
 
     _getPlaces() {
-        this.placesService.getPlaces().then(data => {
-            this.collection = data.result;
-            this._checkEmpty();
-            this._resetState();
-        });
+        this.placesService.getPlaces().then(
+            (data) => {
+                this.collection = data.result;
+                this._checkEmpty();
+                this._resetState();
+            },
+            (errorCode) => {
+                this.listLoader = false;
+                this.handleError(errorCode);
+            });
     }
 
     _resetState() {

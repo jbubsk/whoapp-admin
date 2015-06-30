@@ -2,8 +2,8 @@
     <div class="page-wrapper" ng-controller="PlacesController as ctrl">
 
         <!-- FORM -->
-        <div id="places-form" class="form-side">
-            <div class="form-block">
+        <div id="places-form" class="form-side form-block">
+            <div class="">
                 <div class="form-input">
                     <input type="text" placeholder="Название"
                            ng-model="ctrl.model.name"
@@ -32,7 +32,7 @@
                     <a class="button tiny" ng-click="ctrl.search()">Найти</a>
                 </div>
             </div>
-            <div id="search-results" class="form-block" ng-if="ctrl.showSearchResults">
+            <div id="search-results" class="" ng-if="ctrl.showSearchResults">
                 <div id="address-suggestion-block">
                     <div id="suggested-address">
                         <span ng-bind="ctrl.model.suggestedAddress"></span>

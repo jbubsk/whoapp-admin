@@ -18,12 +18,17 @@ class InterestsController extends ErrorHandler {
     }
 
     getInterests() {
-        this.service.get().then(data => {
-            this.collection = data;
-            this.listLoader = false;
-            this._checkEmpty();
-            this.logger.debug(this.collection);
-        });
+        this.service.get().then(
+            (data) => {
+                this.collection = data;
+                this.listLoader = false;
+                this._checkEmpty();
+                this.logger.debug(this.collection);
+            },
+            (errorCode) => {
+                this.listLoader = false;
+                this.handleError(errorCode);
+            });
     }
 
     add() {
