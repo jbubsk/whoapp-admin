@@ -1,6 +1,5 @@
 'use strict';
 
-import config from '../config';
 import CoreService from './core.service';
 
 class UsersService extends CoreService {

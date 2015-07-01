@@ -70,7 +70,6 @@
 
 #search-results {
   position: relative;
-  width: inherit;
 }
 
 #place-add-loader {
@@ -88,7 +87,7 @@
 #address-suggestion-block {
   @extend .flex-column;
   color: #3eae3e;
-  padding: 10px;
+  padding: 10px 0;
   border: solid 1px #51e451;
   border-bottom: none;
   border-top-left-radius: 2px;

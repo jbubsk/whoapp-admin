@@ -1,3 +1,5 @@
+'use strict';
+
 function errorBlock() {
     return {
         restrict: 'EA',
@@ -8,11 +10,11 @@ function errorBlock() {
         '<span ng-bind="ctrl.errorMessage"/>' +
         '</div>',
         compile: function (element, attributes) {
-            if (attributes['border'] === 'no' || attributes['border'] === 'false') {
+            if (attributes.border === 'no' || attributes.border === 'false') {
                 element.addClass('error-msg');
             }
         }
-    }
+    };
 }
 
 export default errorBlock;

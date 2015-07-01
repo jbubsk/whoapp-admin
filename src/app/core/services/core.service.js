@@ -41,6 +41,6 @@ class CoreService {
                     return deferred.promise;
                 }
             }
-        }
+        };
     }
 }
