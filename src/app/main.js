@@ -5,6 +5,7 @@ import 'angular-ui-router';
 import 'angular-cookies';
 import 'angular-resource';
 import 'angular-animate';
+import 'angular-sanitize';
 import 'jquery';
 
 import appCore from './core/core';

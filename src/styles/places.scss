@@ -1,11 +1,12 @@
 #city-block {
-  @extend .flex-row-center;
+  @extend .flex-row;
+  justify-content: flex-start;
 
   #city-editor {
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: 230px;
+    width: 250px;
   }
 }
 
@@ -126,6 +127,33 @@
 
 .button.green {
   background-color: #0f8f0b;
+}
+
+#places #collection .collection-row {
+  height: 65px;
+}
+
+#collection .collection-row {
+
+  .place-first-cell {
+    width: 200px;
+    @extend .flex-column;
+    align-self: stretch;
+
+    .place-name {
+      font-weight: bold;
+    }
+  }
+
+  .place-address {
+    justify-content: flex-start !important;
+    flex-grow: 1;
+  }
+
+  .place-city {
+    @extend .flex-row-center;
+    margin-left: 10px;
+  }
 }
 
 .place-details-wrapper {

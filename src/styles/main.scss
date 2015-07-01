@@ -90,7 +90,7 @@ hr {
   height: inherit;
 }
 
-#collection .item-row {
+#collection .collection-row {
   @extend .flex-row-center;
   height: 40px;
   line-height: 20px;
@@ -105,17 +105,17 @@ hr {
   }
 }
 
-#collection .item-row:last-child {
+#collection .collection-row:last-child {
   border-bottom: solid 1px rgb(232, 230, 230);
   border-radius: 2px;
 }
 
-#collection .item-row:first-child {
+#collection .collection-row:first-child {
   border-top: solid 1px rgb(232, 230, 230);
   border-radius: 2px;
 }
 
-.item-row .delete-item {
+.collection-row .delete-item {
   position: relative;
   width: 12px;
   height: 12px;
@@ -125,30 +125,10 @@ hr {
   }
 }
 
-.item-row .item-name {
-  justify-content: flex-start !important;
+#collection .collection-row .item-name {
+  justify-content: flex-start;
   width: 150px;
   margin-right: 5px;
-}
-
-.item-row .place-address {
-  justify-content: flex-start !important;
-  flex-grow: 1;
-}
-
-.item-row .place-city {
-  @extend .flex-row-center;
-  margin-left: 10px;
-}
-
-.item-row .user-date {
-  justify-content: flex-start !important;
-  flex-grow: 1;
-}
-
-.item-row .user-status {
-  @extend .flex-row-center;
-  margin-left: 10px;
 }
 
 .form-side {
@@ -168,7 +148,7 @@ hr {
   @extend .flex-row-center;
   flex-flow: column;
   margin-top: 0;
-  input[type='text'],input[type='password'],
+  input[type='text'], input[type='password'],
   textarea {
     height: 30px !important;
     margin-bottom: 5px !important;

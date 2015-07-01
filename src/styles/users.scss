@@ -1,3 +1,13 @@
 .red {
   color: red;
 }
+
+.collection-row .user-date {
+  justify-content: flex-start !important;
+  flex-grow: 1;
+}
+
+.collection-row .user-status {
+  @extend .flex-row-center;
+  margin-left: 10px;
+}

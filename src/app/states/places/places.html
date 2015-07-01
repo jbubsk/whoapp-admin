@@ -1,15 +1,18 @@
-<div>
+<div id="places">
     <div class="page-wrapper" ng-controller="PlacesController as ctrl">
 
         <!-- FORM -->
         <div id="places-form" class="form-side">
             <div class="form-block">
                 <div>
+                    <!-- name -->
                     <div class="form-input">
                         <input type="text" placeholder="Название"
                                ng-model="ctrl.model.name"
                                watch-error/>
                     </div>
+
+                    <!-- city -->
                     <div id="city-block" class="form-input">
                         <div id="city-editor">
                             <input type="text" placeholder="Город"
@@ -24,11 +27,21 @@
                             <img ng-src="{{ctrl.images.edit}}" alt="Edit"/>
                         </div>
                     </div>
+
+                    <!-- address -->
                     <div class="form-input">
                         <input type="text" placeholder="Адрес"
                                ng-model="ctrl.model.address"
                                watch-error/>
                     </div>
+
+                    <!-- phone -->
+                    <div class="form-input">
+                        <input type="text" placeholder="Телефон"
+                               ng-model="ctrl.model.phone"
+                               watch-error/>
+                    </div>
+
                     <div class="form-input">
                         <a class="button tiny" ng-click="ctrl.search()">Найти</a>
                     </div>
@@ -62,10 +75,13 @@
         <!-- LIST -->
         <div class="list-side">
             <div id="collection" ng-if="!ctrl.listLoader">
-                <div ng-repeat="item in ctrl.collection" class="item-row row-animation"
+                <div ng-repeat="item in ctrl.collection" class="collection-row row-animation"
                      ng-click="ctrl.transition(item, $event)">
                     <div delete-item service="PlacesService"></div>
-                    <div class="item-name">{{item.name}}</div>
+                    <div class="place-first-cell">
+                        <span class="place-name">{{item.name}}</span>
+                        <span class="place-phone">{{item.phone}}</span>
+                    </div>
                     <div class="place-address">{{item.address}}</div>
                     <div class="place-city">{{item.city}}</div>
                 </div>

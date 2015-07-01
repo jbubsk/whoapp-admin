@@ -20,7 +20,9 @@ System.config({
     "angular-cookies": "github:angular/bower-angular-cookies@1.3.16",
     "angular-foundation": "github:pineconellc/angular-foundation@0.6.0",
     "angular-resource": "github:angular/bower-angular-resource@1.3.16",
+    "angular-sanitize": "github:angular/bower-angular-sanitize@1.4.1",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
+    "app.config": "./src/app.config.json",
     "babel": "npm:babel-core@5.5.6",
     "babel-runtime": "npm:babel-runtime@5.5.6",
     "bootstrap": "github:twbs/bootstrap@3.3.4",
@@ -39,6 +41,9 @@ System.config({
     "github:angular/bower-angular-cookies@1.3.16": {
       "angular": "github:angular/bower-angular@1.3.16"
     },
+    "github:angular/bower-angular-sanitize@1.4.1": {
+      "angular": "github:angular/bower-angular@1.3.16"
+    },
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },
@@ -52,8 +57,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
-    },
-    "app.config": "./src/app.config.json"
+    }
   }
 });
 

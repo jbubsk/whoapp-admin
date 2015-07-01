@@ -6,7 +6,7 @@ import watchErrorDirective from './watch.error.directive';
 import placesRoute from './places.route';
 import placeDetails from './details/place.details';
 
-export default angular.module('places', [placeDetails.name])
+export default angular.module('places', [placeDetails.name, 'ngSanitize'])
     .config(placesRoute)
     .controller('PlacesController', PlacesController)
     .directive('cityLoad', cityLoadDirective)

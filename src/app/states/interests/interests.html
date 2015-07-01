@@ -12,7 +12,7 @@
     </div>
     <div class="list-side">
         <div editors-list id="collection" ng-if="!ctrl.listLoader">
-            <div class="item-row row-animation" ng-repeat="item in ctrl.collection">
+            <div class="collection-row row-animation" ng-repeat="item in ctrl.collection">
                 <div delete-item service="InterestsService"></div>
                 <div editor model="item" class="item-name"></div>
             </div>

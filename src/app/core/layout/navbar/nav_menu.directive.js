@@ -17,7 +17,6 @@ function navMenuDirective($injector) {
         restrict: 'E',
         controller: NavMenuController,
         link: function (scope) {
-            $injector.get('$log').debug('navMenu linked');
             function setActiveMenu() {
                 angular.forEach(scope.menuItems, function (value) {
                     if (value.state === $injector.get('$state').current.name) {
@@ -26,7 +25,6 @@ function navMenuDirective($injector) {
                         value.className = '';
                     }
                 });
-                $injector.get('$log').debug({'setting active menu': scope.menuItems});
             }
 
             $injector.get('$rootScope').$on('$stateChangeSuccess', () => {

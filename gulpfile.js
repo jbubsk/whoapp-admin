@@ -229,24 +229,6 @@ gulp.task('bundle', 'Create JS production bundle', ['jshint'], function (cb) {
 });
 
 /**
- * The 'watch' task set up the checks to see if any of the files listed below
- * change, and then to execute the listed tasks when they do.
- */
-gulp.task('watch', 'Watch files for changes', function () {
-    // Watch images and fonts files
-    gulp.watch([paths.app.images], [browserSync.reload]);
-
-    // Watch css files
-    gulp.watch(paths.app.styles, ['sass']);
-
-    // Watch js files
-    gulp.watch([paths.app.scripts, paths.gulpfile], ['jshint', browserSync.reload]);
-
-    // Watch html files
-    gulp.watch([paths.app.html, paths.app.templates], ['htmlhint', browserSync.reload]);
-});
-
-/**
  * The 'copy' task just copies files from A to B. We use it here
  * to copy our files that haven't been copied by other tasks
  * e.g. (favicon, etc.) into the `build/dist` directory.
@@ -331,6 +313,25 @@ gulp.task('config', 'setup config variables', function () {
         fs.writeFileSync(fileName, content);
     }
 });
+
+/**
+ * The 'watch' task set up the checks to see if any of the files listed below
+ * change, and then to execute the listed tasks when they do.
+ */
+gulp.task('watch', 'Watch files for changes', function () {
+    // Watch images and fonts files
+    gulp.watch([paths.app.images], [browserSync.reload]);
+
+    // Watch css files
+    gulp.watch(paths.app.styles, ['sass']);
+
+    // Watch js files
+    gulp.watch([paths.app.scripts, paths.gulpfile], ['jshint', browserSync.reload]);
+
+    // Watch html files
+    gulp.watch([paths.app.html, paths.app.templates], ['htmlhint', browserSync.reload]);
+});
+
 //=============================================
 //                MAIN TASKS
 //=============================================
@@ -342,8 +343,19 @@ gulp.task('config', 'setup config variables', function () {
 /**
  * The 'serve' task serve the dev environment.
  */
-gulp.task('serve', 'Serve for the dev environment', ['config', 'sass', 'watch'], function () {
+gulp.task('serve', 'Serve for the dev environment', ['config'], function () {
     startBrowserSync(['.tmp', 'src', 'jspm_packages', './']);
+    // Watch images and fonts files
+    gulp.watch([paths.app.images], [browserSync.reload]).on('change', browserSync.reload);
+
+    // Watch css files
+    gulp.watch(paths.app.styles, ['sass']);
+
+    // Watch js files
+    gulp.watch([paths.app.scripts, paths.gulpfile]).on('change', browserSync.reload);
+
+    // Watch html files
+    gulp.watch([paths.app.html, paths.app.templates]).on('change', browserSync.reload);
 });
 gulp.task('default', 'Watch files and build environment', ['serve']);
 

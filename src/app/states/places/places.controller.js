@@ -17,6 +17,7 @@ class PlacesController extends ErrorHandler {
             city: '',
             cityId: '',
             address: '',
+            phone: '',
             latitude: '',
             longitude: '',
             suggestedAddress: ''
@@ -59,6 +60,7 @@ class PlacesController extends ErrorHandler {
             name: this.model.name,
             city: this.model.city,
             cityId: this.model.cityId,
+            phone: this.model.phone,
             address: this.model.suggestedAddress,
             latitude: this.model.latitude.toFixed(7),
             longitude: this.model.longitude.toFixed(7)
@@ -92,6 +94,8 @@ class PlacesController extends ErrorHandler {
             this.handleError('Заполните, пожалуйста, название');
         } else if (model.address.trim().length === 0) {
             this.handleError('Заполните, пожалуйста, адрес');
+        } else if (model.phone.trim().length === 0) {
+            this.handleError('Заполните, пожалуйста, номер телефона');
         }
 
         return this.errorMessage.length === 0;

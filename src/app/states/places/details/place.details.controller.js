@@ -30,7 +30,7 @@ class PlaceDetailsController {
 	}
 
 	close() {
-		this.injector.get('$state').go('places');
+		this.injector.get('$state').go('places', null, {reload: true});
 	}
 
 	save() {
@@ -44,7 +44,7 @@ class PlaceDetailsController {
 		this.place.interestsIds = interestsIds;
 		this.injector.get('$log').debug(interestsIds);
 		service.updatePlace(this.place).then(() => {
-			this.injector.get('$state').go('places');
+			this.close();
 		});
 	}
 
