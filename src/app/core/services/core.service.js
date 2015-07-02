@@ -27,20 +27,7 @@ class CoreService {
 
     _getMethodImplementation(methodName) {
         return {
-            method: methodName,
-            withCredentials: true,
-            interceptor: {
-                responseError: (error) => {
-                    var deferred = this.$q.defer();
-
-                    if (error.data && error.data.code) {
-                        deferred.reject(error.data.code);
-                    } else {
-                        deferred.reject(error.status);
-                    }
-                    return deferred.promise;
-                }
-            }
+            method: methodName
         };
     }
 }

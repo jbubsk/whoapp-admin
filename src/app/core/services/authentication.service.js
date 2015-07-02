@@ -4,30 +4,23 @@ class AuthService {
 
     constructor($injector) {
         this.resource = $injector.get('$resource');
-        this.session = $injector.get('Session');
         this.logger = $injector.get('$log');
         this.$q = $injector.get('$q');
+        this.sessionStorage = $injector.get('$window').sessionStorage;
     }
 
     login(model) {
         var deferred = this.$q.defer();
 
         this.resource(config.serviceHost + '/auth/login', null, {
-            login: {method: 'POST', withCredentials: true}
+            login: {method: 'POST'}
         }).login(model).$promise.then(
             (data) => {
-                this.session.create(data.username);
-                this.logger.debug({
-                    info: 'New session is created.',
-                    result: data.result
-                });
+                this.sessionStorage.token = data.token;
                 deferred.resolve(data);
             },
             (error) => {
-                this.logger.debug({
-                    info: 'Authentication is failed.',
-                    result: error.data
-                });
+                delete this.sessionStorage.token;
                 deferred.reject({errorCode: error.status});
             });
 
@@ -37,20 +30,23 @@ class AuthService {
     logout() {
 
         return this.resource(config.serviceHost + '/auth/logout', null, {
-            get: {method: 'GET', withCredentials: true}
+            get: {method: 'GET'}
         }).get().$promise.then(
-            function (data) {
-                this.session.destroy();
+            (data) => {
+                delete this.sessionStorage.token;
                 this.logger.debug({
                     info: 'Session is destroyed.',
                     result: data.result
                 });
-            }.bind(this)
+            },
+            () => {
+                delete this.sessionStorage.token;
+            }
         );
     }
 
     isAuthenticated() {
-        return this.session.isAuthenticated();
+        return !!this.sessionStorage.token;
     }
 
     register() {

@@ -1,13 +1,12 @@
 'use strict';
 
 class LayoutController {
-	constructor(authenticated, $state, Session) {
+	constructor(authenticated, $state) {
 		if (!authenticated) {
-			Session.destroy();
 			$state.go('login');
 		}
 	}
 }
 
-LayoutController.$inject = ['authenticated', '$state', 'Session'];
+LayoutController.$inject = ['authenticated', '$state'];
 export default LayoutController;

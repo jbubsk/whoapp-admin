@@ -1,10 +1,13 @@
 'use strict';
 
 function interceptors($injector) {
-    var logger = $injector.get('$log');
+    var logger = $injector.get('$log'),
+        $q = $injector.get('$q'),
+        sessionStorage = $injector.get('$window').sessionStorage;
 
     return {
         'request': function (config) {
+            config.headers.Authorization = 'Bearer ' + sessionStorage.token;
             logger.debug(config);
             return config;
         },
@@ -13,16 +16,17 @@ function interceptors($injector) {
             return response;
         },
         'responseError': function (response) {
-            var $state = $injector.get('$state');
-            var Session = $injector.get('Session');
-            var $q = $injector.get('$q');
+            var deferred = $q.defer(),
+                $state = $injector.get('$state');
 
-            if (response.status === 401) {
-                Session.destroy();
-                $state.go('login');
+            if (response.data && response.data.code) {
+                deferred.reject(response.data.code);
+            } else {
+                deferred.reject(response.status);
             }
-            if (response.data === null) {
-                response.status = 503;
+            if (response.status === 401) {
+                delete sessionStorage.token;
+                $state.go('login');
             }
             return $q.reject(response);
         }

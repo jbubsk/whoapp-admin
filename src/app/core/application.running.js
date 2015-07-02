@@ -16,14 +16,13 @@ function authenticationRouting(event, toState) {
     }
 }
 
-function applicationRun(Session, $templateCache, $rootScope, $injector) {
+function applicationRun($templateCache, $rootScope, $injector) {
 
-    Session.initialize();
     $templateCache.put('app/core/layout/navbar/navbar.html', template);
     $rootScope.$on('$stateChangeStart', authenticationRouting.bind({
         $injector: $injector
     }));
 }
-applicationRun.$inject = ['Session', '$templateCache', '$rootScope', '$injector'];
+applicationRun.$inject = ['$templateCache', '$rootScope', '$injector'];
 
 export default applicationRun;

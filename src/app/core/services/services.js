@@ -1,6 +1,5 @@
 'use strict';
 
-import Session from './session.service';
 import AuthService from './authentication.service';
 import YandexService from './yandex.service';
 import CityService from './cities.service';
@@ -9,7 +8,6 @@ import InterestsService from './interests.service';
 import UsersService from './users.service';
 
 export default angular.module('services', [])
-	.service('Session', Session)
 	.service('AuthService', AuthService)
 	.service('CityService', CityService)
 	.service('YandexService', YandexService)
