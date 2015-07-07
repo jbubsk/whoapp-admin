@@ -343,7 +343,7 @@ gulp.task('watch', 'Watch files for changes', function () {
 /**
  * The 'serve' task serve the dev environment.
  */
-gulp.task('serve', 'Serve for the dev environment', ['config'], function () {
+gulp.task('serve', 'Serve for the dev environment', ['sass', 'config'], function () {
     startBrowserSync(['.tmp', 'src', 'jspm_packages', './']);
     // Watch images and fonts files
     gulp.watch([paths.app.images], [browserSync.reload]).on('change', browserSync.reload);

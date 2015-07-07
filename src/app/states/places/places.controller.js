@@ -8,6 +8,7 @@ class PlacesController extends ErrorHandler {
         this.$scope = $scope;
         this.service = $injector.get('YandexService');
         this.placesService = $injector.get('PlacesService');
+        this.interestsService = $injector.get('InterestsService');
         this.logger = $injector.get('$log');
         this.images = $injector.get('IMAGES');
         this.state = $injector.get('$state');
@@ -27,7 +28,7 @@ class PlacesController extends ErrorHandler {
         this.listLoader = true;
         this.addPlaceLoader = false;
         this.collection = [];
-        this._getPlaces();
+        this._loadData();
     }
 
     search() {
@@ -57,14 +58,22 @@ class PlacesController extends ErrorHandler {
 
     add() {
         var model = {
-            name: this.model.name,
-            city: this.model.city,
-            cityId: this.model.cityId,
-            phone: this.model.phone,
-            address: this.model.suggestedAddress,
-            latitude: this.model.latitude.toFixed(7),
-            longitude: this.model.longitude.toFixed(7)
-        };
+                name: this.model.name,
+                city: this.model.city,
+                cityId: this.model.cityId,
+                phone: this.model.phone,
+                address: this.model.suggestedAddress,
+                latitude: this.model.latitude.toFixed(7),
+                longitude: this.model.longitude.toFixed(7)
+            },
+            interestsIds = [];
+
+        this.interests.forEach(item => {
+            if (item.selected) {
+                interestsIds.push(item.id);
+            }
+        });
+        model.interestsIds = interestsIds;
 
         if (this._isModelValid()) {
             this.addPlaceLoader = true;
@@ -101,7 +110,7 @@ class PlacesController extends ErrorHandler {
         return this.errorMessage.length === 0;
     }
 
-    _getPlaces() {
+    _loadData() {
         this.placesService.getPlaces().then(
             (data) => {
                 this.collection = data.result;
@@ -112,6 +121,10 @@ class PlacesController extends ErrorHandler {
                 this.listLoader = false;
                 this.handleError(errorCode);
             });
+
+        this.interestsService.get().then((interests) => {
+            this.interests = interests;
+        });
     }
 
     _resetState() {

@@ -16,7 +16,7 @@
             <span class="title">Телефон</span>
             <input type="text" ng-model="placeDetails.place.phone"/>
         </div>
-        <div id="site§" class="form-input">
+        <div id="site" class="form-input">
             <span class="title">Сайт</span>
             <input type="text" ng-model="placeDetails.place.site"/>
         </div>
@@ -28,10 +28,12 @@
             <span class="title">Категории</span>
 
             <div id="interests-list">
-                <div ng-repeat="interest in placeDetails.interests" class="interest-row-wrapper">
-                    <div class="interest-row-content">
-                        <input type="checkbox" ng-model="interest.selected"/>
-                        <span ng-bind="interest.name"></span>
+                <div>
+                    <div ng-repeat="interest in placeDetails.interests" class="interest-row-wrapper">
+                        <div class="interest-row-content">
+                            <input type="checkbox" ng-model="interest.selected"/>
+                            <span ng-bind="interest.name"></span>
+                        </div>
                     </div>
                 </div>
             </div>

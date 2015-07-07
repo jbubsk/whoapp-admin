@@ -79,11 +79,6 @@ hr {
   font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
 }
 
-#collection {
-  overflow: auto;
-  min-width: 200px;
-}
-
 #places-loader {
   background: url("../images/ajax-loader.gif") no-repeat center;
   width: inherit;
@@ -135,7 +130,7 @@ hr {
   @extend .flex-column;
   justify-content: center;
   padding: 0 5px;
-  border-right: 1px solid rgb(240, 240, 240);
+  border-right: 1px solid rgb(252, 252, 252);
   width: 320px;
   height: 400px;
 }
