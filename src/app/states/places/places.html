@@ -1,5 +1,5 @@
 <div id="places">
-    <div class="page-wrapper" ng-controller="PlacesController as ctrl">
+    <div id="places_page_wrapper" class="page-wrapper" ng-controller="PlacesController as ctrl">
 
         <!-- FORM -->
         <div class="form-side">
@@ -85,7 +85,7 @@
         </div>
 
         <!-- LIST -->
-        <div id="places-list" class="list-side">
+        <div id="places-list" class="list-side" auto-height>
             <div id="collection" ng-if="!ctrl.listLoader">
                 <div ng-repeat="item in ctrl.collection" class="collection-row row-animation"
                      ng-click="ctrl.transition(item, $event)">
@@ -95,6 +95,7 @@
                         <span class="place-phone">{{item.phone}}</span>
                     </div>
                     <div class="place-address">{{item.address}}</div>
+                    <div>we</div>
                     <div class="place-city">{{item.city}}</div>
                 </div>
             </div>

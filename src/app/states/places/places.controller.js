@@ -133,7 +133,7 @@ class PlacesController extends ErrorHandler {
                 this.model[key] = '';
             }
         });
-        this.cityEditorDisabled = false;
+        //this.cityEditorDisabled = false;
         this.showSearchResults = false;
         this.listLoader = false;
     }
