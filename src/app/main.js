@@ -1,5 +1,6 @@
 'use strict';
 
+import 'babel/polyfill';
 import 'angular';
 import 'angular-ui-router';
 import 'angular-cookies';

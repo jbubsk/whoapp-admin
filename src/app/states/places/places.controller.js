@@ -129,7 +129,9 @@ class PlacesController extends ErrorHandler {
 
     _resetState() {
         angular.forEach(this.model, (value, key) => {
-            this.model[key] = '';
+            if (!key.startsWith('city')) {
+                this.model[key] = '';
+            }
         });
         this.cityEditorDisabled = false;
         this.showSearchResults = false;

@@ -4,6 +4,7 @@
 @import "animations";
 @import "interests";
 
+
 @media screen and (max-width: 900px) {
   .page-wrapper {
     width: 900px;
@@ -60,7 +61,7 @@ hr {
 
 .page-wrapper {
   @extend .flex-row-center;
-  margin-top: 50px !important;
+  margin-top: 30px !important;
   padding: 0 10px;
   max-width: 1000px !important;
 }
@@ -74,7 +75,7 @@ hr {
   justify-content: center;
   align-items: center;
   margin: 0 10px;
-  height: 400px;
+  height: 800px;
   width: 480px;
   font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
 }
@@ -83,6 +84,10 @@ hr {
   background: url("../images/ajax-loader.gif") no-repeat center;
   width: inherit;
   height: inherit;
+}
+
+#collection {
+  overflow: scroll;
 }
 
 #collection .collection-row {
@@ -132,7 +137,6 @@ hr {
   padding: 0 5px;
   border-right: 1px solid rgb(252, 252, 252);
   width: 320px;
-  height: 400px;
 }
 
 .form-block {
