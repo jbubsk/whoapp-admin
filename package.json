@@ -8,7 +8,8 @@
     "prod-local": "MODE=local gulp serve:dist",
     "prod-remote": "MODE=remote gulp serve:dist",
     "prod-build": "MODE=remote gulp build",
-    "prepublish": "MODE=remote gulp build"
+    "prepublish": "MODE=remote gulp build",
+    "postinstall": "gulp build"
   },
   "dependencies": {
     "express": "^4.13.1",
