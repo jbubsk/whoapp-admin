@@ -15,7 +15,7 @@ function onApplicationConfig($injector) {
     });
 
     $urlRouterProvider.otherwise('/home');
-
+    //console.log();
     $urlRouterProvider.when('/', '/home');
 
     $httpProvider.interceptors.push(interceptors);
