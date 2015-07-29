@@ -3,16 +3,23 @@
   "version": "0.0.1",
   "scripts": {
     "test": "gulp test",
-    "dev_local": "MODE=local gulp serve",
-    "dev_remote": "MODE=remote gulp serve",
-    "prod_local": "MODE=local gulp serve:dist ",
-    "prod_remote": "MODE=remote gulp serve:dist",
-    "prod_build": "MODE=remote gulp build"
+    "dev-local": "MODE=local gulp serve",
+    "dev-remote": "MODE=remote gulp serve",
+    "prod-local": "MODE=local gulp serve:dist",
+    "prod-remote": "MODE=remote gulp serve:dist",
+    "prod-build": "MODE=remote gulp build",
+    "prepublish": "MODE=remote gulp build"
+  },
+  "dependencies": {
+    "express": "^4.13.1",
+    "mkdirp": "^0.5.1",
+    "morgan": "^1.6.1",
+    "send": "^0.13.0",
+    "url": "^0.10.3",
+    "winston": "^1.0.1"
   },
   "devDependencies": {
     "browser-sync": "^2.7.1",
-    "connect-modrewrite": "^0.8.1",
-    "conventional-changelog": "^0.0.17",
     "del": "^1.1.1",
     "gulp": "^3.8.8",
     "gulp-autoprefixer": "^2.2.0",
@@ -45,13 +52,10 @@
     "gulp-uglify": "^1.2.0",
     "gulp-usemin": "^0.3.8",
     "gulp-util": "^3.0.4",
-    "http-proxy": "^1.11.1",
     "jshint-stylish": "^1.0.2",
     "jspm": "^0.15.6",
     "moment": "^2.10.3",
-    "plato": "^1.4.0",
     "run-sequence": "^1.1.0",
-    "semver": "^4.3.4",
     "systemjs-builder": "^0.10.6"
   },
   "engines": {

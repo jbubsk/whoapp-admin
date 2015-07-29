@@ -24,6 +24,7 @@ class LoginController extends ErrorHandler {
                 this.handleError(err.errorCode);
             });
     }
+
 }
 
 LoginController.$inject = ['$injector'];

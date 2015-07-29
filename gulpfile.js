@@ -293,25 +293,29 @@ gulp.task('compile', 'Does the same as \'jshint\', \'htmlhint\', \'images\', \'t
  * Setup config file ./src/app.config.json to include there env,serviceHost,socketHost
  */
 gulp.task('config', 'setup config variables', function () {
-    if (process.env.MODE) {
-        var fileName = './src/app.config.json',
-            local = {
-                env: 'development',
-                serviceHost: 'http://172.16.16.114:8085'
-            },
-            remote = {
-                env: 'development',
-                serviceHost: 'http://whoappbackend-jbubsk.rhcloud.com'
-            };
+    var fileName = './src/app.config.json',
+        local = {
+            env: 'development',
+            serviceHost: 'http://172.16.16.114:8085'
+        },
+        remote = {
+            env: 'development',
+            serviceHost: 'http://whoappbackend-jbubsk.rhcloud.com'
+        },
+        content;
 
-        var content;
+    if (process.env.MODE) {
+
         if (process.env.MODE === 'local') {
             content = JSON.stringify(local);
         } else {
             content = JSON.stringify(remote);
         }
-        fs.writeFileSync(fileName, content);
+    } else {
+        content = JSON.stringify(remote);
     }
+    fs.writeFileSync(fileName, content);
+
 });
 
 /**
