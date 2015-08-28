@@ -10,21 +10,18 @@ class AuthService {
     }
 
     login(model) {
-        var deferred = this.$q.defer();
-
-        this.resource(config.serviceHost + '/auth/login', null, {
+        var self = this;
+        return self.resource(config.serviceHost + '/auth/login', null, {
             login: {method: 'POST'}
         }).login(model).$promise.then(
             (data) => {
-                this.sessionStorage.token = data.token;
-                deferred.resolve(data);
+                self.sessionStorage.token = data.token;
+                return data;
             },
             (error) => {
-                delete this.sessionStorage.token;
-                deferred.reject({errorCode: error.status});
+                delete self.sessionStorage.token;
+                return self.$q.reject({errorCode: error.status});
             });
-
-        return deferred.promise;
     }
 
     logout() {
